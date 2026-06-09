@@ -1,0 +1,16 @@
+{
+  "name": "Harmonização",
+  "colors": {
+    "bg": "#FFFFFF",
+    "surface": "#FFFFFF",
+    "soft": "#F7EEEA",
+    "ink": "#3A2A2A",
+    "ink-muted": "#6E5C58",
+    "primary": "#7A5C57",
+    "secondary": "#B98E86",
+    "accent": "#C9A24B",
+    "accent-ink": "#2A1F1D",
+    "border": "#ECE0DB"
+  },
+  "fonts": { "display": "'Poppins', sans-serif", "body": "'Poppins', sans-serif" }
+}
