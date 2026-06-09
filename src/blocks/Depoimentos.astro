@@ -1,0 +1,32 @@
+---
+interface Item { quote: string; name: string; role: string; }
+interface Props { eyebrow?: string; title: string; rating?: { score: string; label: string }; items?: Item[]; }
+const { eyebrow, title, rating, items = [] } = Astro.props;
+---
+<section class="section bg-soft">
+  <div class="container-x">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+      <div class="max-w-2xl">
+        {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+        <h2 class="text-3xl md:text-4xl">{title}</h2>
+      </div>
+      {rating && (
+        <div class="text-right">
+          <p class="font-display text-3xl font-bold text-accent">★ {rating.score}</p>
+          <p class="text-sm text-ink-muted">{rating.label}</p>
+        </div>
+      )}
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {items.map((t) => (
+        <figure class="card p-7">
+          <blockquote class="text-ink">“{t.quote}”</blockquote>
+          <figcaption class="mt-5">
+            <p class="font-semibold text-ink">{t.name}</p>
+            <p class="text-sm text-ink-muted">{t.role}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

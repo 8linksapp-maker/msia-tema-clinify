@@ -1,0 +1,38 @@
+---
+interface Feature { title: string; text: string; }
+interface Props { eyebrow?: string; title: string; image?: string; features?: Feature[]; }
+const { eyebrow, title, image, features = [] } = Astro.props;
+const left = features.slice(0, 3);
+const right = features.slice(3, 6);
+---
+<section class="section">
+  <div class="container-x">
+    <div class="max-w-2xl mb-10">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2 class="text-3xl md:text-4xl">{title}</h2>
+    </div>
+    <div class="grid gap-6 lg:grid-cols-3 items-stretch">
+      <div class="grid gap-6 content-center">
+        {left.map((f) => (
+          <div class="card p-5">
+            <span class="ic mb-3">★</span>
+            <h3 class="text-base">{f.title}</h3>
+            <p class="mt-1 text-sm text-ink-muted">{f.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="rounded-2xl bg-soft border border-border overflow-hidden min-h-[16rem]">
+        {image && <img src={image} alt={title} class="w-full h-full object-cover" />}
+      </div>
+      <div class="grid gap-6 content-center">
+        {right.map((f) => (
+          <div class="card p-5">
+            <span class="ic mb-3">★</span>
+            <h3 class="text-base">{f.title}</h3>
+            <p class="mt-1 text-sm text-ink-muted">{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

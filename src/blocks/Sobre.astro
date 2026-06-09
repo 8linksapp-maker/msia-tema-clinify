@@ -1,0 +1,36 @@
+---
+interface Props {
+  image?: string;
+  badge?: string;
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  benefits?: string[];
+  cta?: { label: string; href: string };
+}
+const { image, badge, eyebrow, title, lead, benefits = [], cta } = Astro.props;
+---
+<section id="sobre" class="section">
+  <div class="container-x grid gap-12 lg:grid-cols-2 items-center">
+    <div class="relative">
+      <div class="aspect-[4/3] rounded-2xl bg-soft border border-border overflow-hidden">
+        {image && <img src={image} alt={title} class="w-full h-full object-cover" />}
+      </div>
+      {badge && <div class="btn-primary absolute -bottom-4 left-6 text-sm pointer-events-none">{badge}</div>}
+    </div>
+    <div>
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2 class="text-3xl md:text-4xl">{title}</h2>
+      {lead && <p class="mt-4 text-lg">{lead}</p>}
+      <ul class="mt-6 grid sm:grid-cols-2 gap-3">
+        {benefits.map((b) => (
+          <li class="flex items-start gap-3">
+            <span class="text-accent mt-0.5">✓</span>
+            <span class="text-ink-muted">{b}</span>
+          </li>
+        ))}
+      </ul>
+      {cta && <a href={cta.href} class="btn-ghost mt-8">{cta.label}</a>}
+    </div>
+  </div>
+</section>

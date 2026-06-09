@@ -1,0 +1,26 @@
+---
+interface Member { name: string; role: string; photo?: string; }
+interface Props { eyebrow?: string; title: string; members?: Member[]; }
+const { eyebrow, title, members = [] } = Astro.props;
+---
+<section id="equipe" class="section">
+  <div class="container-x">
+    <div class="max-w-2xl mb-10">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2 class="text-3xl md:text-4xl">{title}</h2>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {members.map((m) => (
+        <article class="card overflow-hidden">
+          <div class="aspect-[3/4] bg-soft">
+            {m.photo && <img src={m.photo} alt={m.name} class="w-full h-full object-cover" />}
+          </div>
+          <div class="p-5">
+            <h3 class="text-base">{m.name}</h3>
+            <p class="text-sm text-accent">{m.role}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

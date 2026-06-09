@@ -1,0 +1,47 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  cta?: { label: string; href: string };
+  rating?: { score: string; count: string };
+  doctor?: { name: string; role: string; photo?: string };
+  contact?: { phone: string; hours: string };
+}
+const { eyebrow, title, lead, cta, rating, doctor, contact } = Astro.props;
+---
+<section class="bg-soft">
+  <div class="container-x section grid gap-12 lg:grid-cols-2 items-center">
+    <div>
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h1 class="text-4xl md:text-5xl leading-tight">{title}</h1>
+      {lead && <p class="mt-5 text-lg max-w-xl">{lead}</p>}
+      <div class="mt-8 flex flex-wrap items-center gap-5">
+        {cta && <a href={cta.href} class="btn-accent">{cta.label}</a>}
+        {rating && (
+          <div class="text-sm">
+            <span class="text-accent font-semibold">★ {rating.score}</span>
+            <span class="text-ink-muted"> · {rating.count}</span>
+          </div>
+        )}
+      </div>
+    </div>
+    <div class="relative">
+      <div class="aspect-[4/3] rounded-2xl bg-surface border border-border overflow-hidden">
+        {doctor?.photo && <img src={doctor.photo} alt={doctor.name} class="w-full h-full object-cover" />}
+      </div>
+      {doctor && (
+        <div class="card absolute -bottom-5 left-5 px-5 py-3 shadow-sm">
+          <p class="font-semibold text-ink">{doctor.name}</p>
+          <p class="text-sm text-ink-muted">{doctor.role}</p>
+        </div>
+      )}
+      {contact && (
+        <div class="card absolute -top-5 right-5 px-5 py-3 shadow-sm">
+          <p class="text-sm font-semibold text-ink">{contact.phone}</p>
+          <p class="text-xs text-ink-muted">{contact.hours}</p>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

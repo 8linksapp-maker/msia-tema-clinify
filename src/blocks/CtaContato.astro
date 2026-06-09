@@ -1,0 +1,32 @@
+---
+import site from '../data/siteConfig.json';
+interface Props { eyebrow?: string; title: string; services?: string[]; }
+const { eyebrow, title, services = [] } = Astro.props;
+---
+<section id="contato" class="section">
+  <div class="container-x grid gap-10 lg:grid-cols-2 items-start">
+    <div>
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2 class="text-3xl md:text-4xl">{title}</h2>
+      <ul class="mt-6 space-y-3 text-ink-muted">
+        <li><span class="font-semibold text-ink">Telefone:</span> {site.phone}</li>
+        <li><span class="font-semibold text-ink">E-mail:</span> {site.email}</li>
+        <li><span class="font-semibold text-ink">Endereço:</span> {site.address}</li>
+        <li><span class="font-semibold text-ink">Horário:</span> {site.hours}</li>
+      </ul>
+    </div>
+    <form action="/api/subscribe" method="POST" class="card p-6 grid gap-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input name="nome" required placeholder="Seu nome" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
+        <input name="telefone" required placeholder="Telefone / WhatsApp" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
+      </div>
+      <input name="email" type="email" placeholder="E-mail" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
+      <select name="servico" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px] text-ink-muted">
+        <option value="">Serviço de interesse</option>
+        {services.map((s) => <option value={s}>{s}</option>)}
+      </select>
+      <textarea name="mensagem" rows="3" placeholder="Mensagem (opcional)" class="rounded-xl border border-border bg-surface px-4 py-3"></textarea>
+      <button type="submit" class="btn-accent w-full">Agendar avaliação</button>
+    </form>
+  </div>
+</section>

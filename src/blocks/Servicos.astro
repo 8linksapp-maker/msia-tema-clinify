@@ -1,0 +1,23 @@
+---
+interface ServiceItem { title: string; text: string; }
+interface Props { eyebrow?: string; title: string; items?: ServiceItem[]; cta?: { label: string; href: string }; }
+const { eyebrow, title, items = [], cta } = Astro.props;
+---
+<section id="servicos" class="section bg-soft">
+  <div class="container-x">
+    <div class="max-w-2xl">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2 class="text-3xl md:text-4xl">{title}</h2>
+    </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {items.map((s) => (
+        <article class="card p-6 hover:border-secondary transition">
+          <span class="ic mb-4">+</span>
+          <h3 class="text-lg">{s.title}</h3>
+          <p class="mt-2 text-sm text-ink-muted">{s.text}</p>
+        </article>
+      ))}
+    </div>
+    {cta && <div class="mt-10"><a href={cta.href} class="btn-accent">{cta.label}</a></div>}
+  </div>
+</section>
