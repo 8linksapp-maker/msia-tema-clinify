@@ -30,3 +30,26 @@ const { eyebrow, title, services = [] } = Astro.props;
     </form>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('form[action="/api/subscribe"]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (btn) btn.disabled = true;
+      try {
+        const r = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!r.ok) throw new Error();
+        form.innerHTML = '<p class="text-ink font-medium py-4">Recebemos seu contato! Em breve a gente retorna.</p>';
+      } catch {
+        if (btn) btn.disabled = false;
+        alert('Não foi possível enviar agora. Tente novamente ou ligue para a gente.');
+      }
+    });
+  });
+</script>
