@@ -1,0 +1,21 @@
+---
+import site from '../../data/siteConfig.json';
+const nav = [
+  { label: 'Início', href: '#' },
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Serviços', href: '#servicos' },
+  { label: 'Equipe', href: '#equipe' },
+  { label: 'Contato', href: '#contato' },
+];
+---
+<header class="sticky top-0 z-50 bg-bg/90 backdrop-blur border-b border-border">
+  <div class="container-x flex items-center justify-between h-16">
+    <a href="/" class="font-display text-xl font-bold text-primary">{site.name}</a>
+    <nav class="hidden md:flex items-center gap-7">
+      {nav.map((n) => (
+        <a href={n.href} class="text-sm text-ink-muted hover:text-primary transition">{n.label}</a>
+      ))}
+    </nav>
+    <a href="#contato" class="btn-accent text-sm">Agendar consulta</a>
+  </div>
+</header>

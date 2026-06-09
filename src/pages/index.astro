@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlockRenderer from '../blocks/BlockRenderer.astro';
+import page from '../data/page.json';
+import site from '../data/siteConfig.json';
+import type { Block } from '../blocks/types';
+const blocks = page.blocks as Block[];
+---
+<BaseLayout title={site.name} description={site.description}>
+  <BlockRenderer blocks={blocks} />
+</BaseLayout>
