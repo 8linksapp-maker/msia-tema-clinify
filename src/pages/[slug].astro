@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlockRenderer from '../blocks/BlockRenderer.astro';
+import type { Block } from '../blocks/types';
+
+interface PageData { meta: { title: string; description: string }; blocks: Block[]; }
+
+export function getStaticPaths() {
+  const mods = import.meta.glob('../data/pages/*.json', { eager: true });
+  return Object.entries(mods).map(([path, mod]) => {
+    const slug = path.split('/').pop()!.replace('.json', '');
+    return { params: { slug }, props: { page: (mod as any).default ?? mod } };
+  });
+}
+
+const { page } = Astro.props as { page: PageData };
+---
+<BaseLayout title={page.meta.title} description={page.meta.description}>
+  <BlockRenderer blocks={page.blocks} />
+</BaseLayout>

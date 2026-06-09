@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "Serviços odontológicos — Clínica Sorriso",
+    "description": "Clínico geral, implantes, estética dental e clareamento. Conheça todos os tratamentos da Clínica Sorriso e agende sua avaliação."
+  },
+  "blocks": [
+    { "type": "pageHeader", "props": {
+      "eyebrow": "Nossos serviços",
+      "title": "Tratamentos de alta qualidade para você.",
+      "lead": "Cuidado completo para o seu sorriso, do preventivo ao estético.",
+      "breadcrumb": [ { "label": "Início", "href": "/" }, { "label": "Serviços", "href": "/servicos" } ]
+    }},
+    { "type": "servicos", "props": {
+      "items": [
+        { "title": "Clínico geral", "text": "Prevenção, limpeza e cuidado de rotina." },
+        { "title": "Implantes", "text": "Reposição de dentes com naturalidade." },
+        { "title": "Estética dental", "text": "Lentes, facetas e harmonização do sorriso." },
+        { "title": "Clareamento", "text": "Sorriso mais branco com segurança." }
+      ],
+      "cta": { "label": "Agendar avaliação", "href": "/agendar" }
+    }},
+    { "type": "porqueEscolher", "props": {
+      "eyebrow": "Por que nos escolher",
+      "title": "Cuidado completo para o seu sorriso.",
+      "image": "/images/why.jpg",
+      "features": [
+        { "title": "Profissionais experientes", "text": "Time qualificado e atencioso." },
+        { "title": "Atendimento personalizado", "text": "Plano sob medida para você." },
+        { "title": "Pagamento facilitado", "text": "Condições que cabem no bolso." },
+        { "title": "Urgência", "text": "Atendimento quando você precisa." },
+        { "title": "Avaliações positivas", "text": "Pacientes que recomendam." },
+        { "title": "Tecnologia atual", "text": "Equipamentos de última geração." }
+      ]
+    }},
+    { "type": "ctaContato", "props": {
+      "eyebrow": "Fale com a gente",
+      "title": "Agende sua avaliação gratuita.",
+      "services": ["Clínico geral", "Implantes", "Estética dental", "Clareamento", "Ortodontia"]
+    }}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "title": "Contato — Clínica Sorriso",
+    "description": "Fale com a Clínica Sorriso: telefone, e-mail, endereço e horários de atendimento. Tire suas dúvidas ou agende uma avaliação."
+  },
+  "blocks": [
+    { "type": "pageHeader", "props": {
+      "eyebrow": "Fale com a gente",
+      "title": "Estamos prontos para te atender.",
+      "lead": "Entre em contato pelo canal que preferir ou envie sua mensagem.",
+      "breadcrumb": [ { "label": "Início", "href": "/" }, { "label": "Contato", "href": "/contato" } ]
+    }},
+    { "type": "ctaContato", "props": {
+      "eyebrow": "Envie uma mensagem",
+      "title": "Vamos conversar sobre o seu sorriso.",
+      "services": ["Clínico geral", "Implantes", "Estética dental", "Clareamento", "Ortodontia"]
+    }}
+  ]
+}

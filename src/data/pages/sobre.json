@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "Sobre a Clínica Sorriso",
+    "description": "15+ anos cuidando do seu sorriso com tecnologia moderna e atendimento humano. Conheça a história e os valores da Clínica Sorriso."
+  },
+  "blocks": [
+    { "type": "pageHeader", "props": {
+      "eyebrow": "Sobre a clínica",
+      "title": "Sua jornada para um sorriso mais saudável.",
+      "lead": "Tecnologia de ponta e um time acolhedor para cada visita tranquila.",
+      "breadcrumb": [ { "label": "Início", "href": "/" }, { "label": "Sobre", "href": "/sobre" } ]
+    }},
+    { "type": "sobre", "props": {
+      "image": "/images/about.jpg",
+      "badge": "15+ anos de experiência",
+      "title": "Sua jornada para um sorriso mais saudável.",
+      "lead": "Unimos tecnologia de ponta e um time acolhedor para que cada visita seja tranquila.",
+      "benefits": [
+        "Equipe especializada e atualizada",
+        "Serviços completos em um só lugar",
+        "Tecnologia de diagnóstico moderna",
+        "Atendimento de urgência"
+      ],
+      "cta": { "label": "Conheça a clínica", "href": "#contato" }
+    }},
+    { "type": "numeros", "props": {
+      "stats": [
+        { "value": "15+", "label": "Anos de experiência" },
+        { "value": "12k", "label": "Pacientes atendidos" },
+        { "value": "18", "label": "Especialistas" },
+        { "value": "98%", "label": "Satisfação" }
+      ]
+    }},
+    { "type": "comoFunciona", "props": {
+      "eyebrow": "Como funciona",
+      "title": "Três passos para o seu sorriso.",
+      "steps": [
+        { "n": "01", "title": "Agende", "text": "Marque sua avaliação online ou por telefone." },
+        { "n": "02", "title": "Avaliação", "text": "Diagnóstico e plano de tratamento personalizado." },
+        { "n": "03", "title": "Cuidado", "text": "Tratamento com acompanhamento próximo." }
+      ]
+    }},
+    { "type": "depoimentos", "props": {
+      "eyebrow": "Depoimentos",
+      "title": "O que nossos pacientes dizem.",
+      "rating": { "score": "4,9", "label": "média de satisfação" },
+      "items": [
+        { "quote": "Atendimento impecável, saí sorrindo de verdade.", "name": "Roberto L.", "role": "Paciente" },
+        { "quote": "Equipe atenciosa e clínica linda. Recomendo!", "name": "Banson D.", "role": "Paciente" },
+        { "quote": "Resolveram minha urgência no mesmo dia.", "name": "Thomas L.", "role": "Paciente" }
+      ]
+    }},
+    { "type": "ctaContato", "props": {
+      "eyebrow": "Fale com a gente",
+      "title": "Agende sua avaliação gratuita.",
+      "services": ["Clínico geral", "Implantes", "Estética dental", "Clareamento", "Ortodontia"]
+    }}
+  ]
+}

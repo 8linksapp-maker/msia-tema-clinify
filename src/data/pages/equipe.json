@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "title": "Nossa equipe de dentistas — Clínica Sorriso",
+    "description": "Conheça os especialistas da Clínica Sorriso: implantodontia, ortodontia, endodontia e estética. Profissionais experientes e atenciosos."
+  },
+  "blocks": [
+    { "type": "pageHeader", "props": {
+      "eyebrow": "Nossa equipe",
+      "title": "Dentistas que cuidam de você.",
+      "lead": "Especialistas experientes para cada necessidade do seu sorriso.",
+      "breadcrumb": [ { "label": "Início", "href": "/" }, { "label": "Equipe", "href": "/equipe" } ]
+    }},
+    { "type": "equipe", "props": {
+      "members": [
+        { "name": "Dr. João Reis", "role": "Implantodontia", "photo": "/images/team-1.jpg" },
+        { "name": "Dra. Marina Alves", "role": "Ortodontia", "photo": "/images/team-2.jpg" },
+        { "name": "Dr. Pedro Nunes", "role": "Endodontia", "photo": "/images/team-3.jpg" },
+        { "name": "Dra. Sofia Castro", "role": "Estética", "photo": "/images/team-4.jpg" }
+      ]
+    }},
+    { "type": "numeros", "props": {
+      "stats": [
+        { "value": "15+", "label": "Anos de experiência" },
+        { "value": "12k", "label": "Pacientes atendidos" },
+        { "value": "18", "label": "Especialistas" },
+        { "value": "98%", "label": "Satisfação" }
+      ]
+    }},
+    { "type": "ctaContato", "props": {
+      "eyebrow": "Fale com a gente",
+      "title": "Agende sua avaliação gratuita.",
+      "services": ["Clínico geral", "Implantes", "Estética dental", "Clareamento", "Ortodontia"]
+    }}
+  ]
+}

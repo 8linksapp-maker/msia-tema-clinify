@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "title": "Agendar consulta — Clínica Sorriso",
+    "description": "Agende sua avaliação odontológica na Clínica Sorriso. Atendimento de segunda a sábado, das 9h às 19h. Marque online."
+  },
+  "blocks": [
+    { "type": "pageHeader", "props": {
+      "eyebrow": "Agendar consulta",
+      "title": "Marque sua avaliação em poucos passos.",
+      "lead": "Escolha o serviço e envie seus dados — a gente confirma o horário.",
+      "breadcrumb": [ { "label": "Início", "href": "/" }, { "label": "Agendar consulta", "href": "/agendar" } ]
+    }},
+    { "type": "comoFunciona", "props": {
+      "eyebrow": "Como funciona",
+      "title": "Três passos para o seu sorriso.",
+      "steps": [
+        { "n": "01", "title": "Agende", "text": "Marque sua avaliação online ou por telefone." },
+        { "n": "02", "title": "Avaliação", "text": "Diagnóstico e plano de tratamento personalizado." },
+        { "n": "03", "title": "Cuidado", "text": "Tratamento com acompanhamento próximo." }
+      ]
+    }},
+    { "type": "ctaContato", "props": {
+      "eyebrow": "Agende agora",
+      "title": "Preencha e agende sua avaliação.",
+      "services": ["Clínico geral", "Implantes", "Estética dental", "Clareamento", "Ortodontia"]
+    }}
+  ]
+}
