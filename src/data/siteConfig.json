@@ -1,0 +1,10 @@
+{
+  "name": "Clínica Sorriso",
+  "description": "Odontologia de excelência com cuidado gentil. Agende sua avaliação.",
+  "phone": "(11) 4002-8922",
+  "whatsapp": "5511940028922",
+  "email": "contato@clinicasorriso.com.br",
+  "address": "Av. Paulista, 1000 — São Paulo, SP",
+  "hours": "Seg a Sáb, 9h às 19h",
+  "social": { "instagram": "#", "facebook": "#", "youtube": "#" }
+}
