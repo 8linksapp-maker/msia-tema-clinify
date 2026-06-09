@@ -1,65 +1,44 @@
 ---
 export const prerender = false;
+import AdminLayout from '../../layouts/AdminLayout.astro';
 import { readFileFromRepo } from '../../lib/server-io';
 const raw = await readFileFromRepo('src/data/subscribers.json');
 const leads = (raw ? JSON.parse(raw) : []).slice().reverse();
 const fmt = (iso: string) => { try { return new Date(iso).toLocaleString('pt-BR'); } catch { return iso; } };
 ---
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Leads — Painel</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root { --p:#0E384C; --a:#FFA800; --b:#E1ECF2; --soft:#EFF8FF; --muted:#527282; }
-    * { box-sizing:border-box; }
-    body { font-family:'Poppins',system-ui,sans-serif; margin:0; background:var(--soft); color:var(--p); }
-    header { background:#fff; border-bottom:1px solid var(--b); padding:1rem 1.5rem; display:flex; justify-content:space-between; align-items:center; }
-    header strong { font-size:1.05rem; }
-    header a { color:var(--muted); text-decoration:none; font-size:.9rem; }
-    main { max-width:1100px; margin:0 auto; padding:1.5rem; }
-    h1 { font-size:1.25rem; }
-    .count { color:var(--muted); font-size:.9rem; margin-bottom:1rem; }
-    table { width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--b); border-radius:12px; overflow:hidden; }
-    th, td { text-align:left; padding:.75rem 1rem; border-bottom:1px solid var(--b); font-size:.9rem; vertical-align:top; }
-    th { background:var(--soft); font-weight:600; }
-    tr:last-child td { border-bottom:0; }
-    .empty { background:#fff; border:1px solid var(--b); border-radius:12px; padding:2rem; text-align:center; color:var(--muted); }
-    .tag { background:var(--soft); border:1px solid var(--b); border-radius:999px; padding:.1rem .6rem; font-size:.75rem; }
-  </style>
-</head>
-<body>
-  <header>
-    <strong>Painel da clínica · Leads</strong>
-    <a href="/api/admin/logout">Sair</a>
-  </header>
-  <main>
-    <h1>Contatos recebidos</h1>
-    <p class="count">{leads.length} {leads.length === 1 ? 'lead' : 'leads'}</p>
-    {leads.length === 0 ? (
-      <div class="empty">Nenhum lead ainda. Quando alguém preencher o formulário do site, aparece aqui.</div>
-    ) : (
-      <table>
-        <thead>
-          <tr><th>Recebido</th><th>Nome</th><th>Telefone</th><th>E-mail</th><th>Serviço</th><th>Mensagem</th></tr>
+<AdminLayout title="Leads" activeSection="leads">
+  <h1 class="text-2xl font-bold text-stone-900 mb-1">Contatos recebidos</h1>
+  <p class="text-stone-500 text-sm mb-6">{leads.length} {leads.length === 1 ? 'lead' : 'leads'}</p>
+  {leads.length === 0 ? (
+    <div class="bg-white border border-stone-200 rounded-xl p-8 text-center text-stone-500">
+      Nenhum lead ainda. Quando alguém preencher o formulário do site, aparece aqui.
+    </div>
+  ) : (
+    <div class="bg-white border border-stone-200 rounded-xl overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-50 text-stone-700">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold">Recebido</th>
+            <th class="text-left px-4 py-3 font-semibold">Nome</th>
+            <th class="text-left px-4 py-3 font-semibold">Telefone</th>
+            <th class="text-left px-4 py-3 font-semibold">E-mail</th>
+            <th class="text-left px-4 py-3 font-semibold">Serviço</th>
+            <th class="text-left px-4 py-3 font-semibold">Mensagem</th>
+          </tr>
         </thead>
         <tbody>
           {leads.map((l: any) => (
-            <tr>
-              <td>{fmt(l.recebidoEm)}</td>
-              <td>{l.nome}</td>
-              <td>{l.telefone}</td>
-              <td>{l.email || '—'}</td>
-              <td>{l.servico ? <span class="tag">{l.servico}</span> : '—'}</td>
-              <td>{l.mensagem || '—'}</td>
+            <tr class="border-t border-stone-200 align-top">
+              <td class="px-4 py-3 text-stone-600 whitespace-nowrap">{fmt(l.recebidoEm)}</td>
+              <td class="px-4 py-3 text-stone-900">{l.nome}</td>
+              <td class="px-4 py-3 text-stone-600">{l.telefone}</td>
+              <td class="px-4 py-3 text-stone-600">{l.email || '—'}</td>
+              <td class="px-4 py-3">{l.servico ? <span class="bg-teal-50 text-teal-800 rounded-full px-2 py-0.5 text-xs">{l.servico}</span> : '—'}</td>
+              <td class="px-4 py-3 text-stone-600">{l.mensagem || '—'}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    )}
-  </main>
-</body>
-</html>
+    </div>
+  )}
+</AdminLayout>
