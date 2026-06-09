@@ -1,0 +1,29 @@
+---
+export const prerender = false;
+import AdminNav from '../components/admin/AdminNav';
+import CmsToaster from '../components/admin/CmsToaster';
+import '../styles/admin.css';
+interface Props { title?: string; activeSection?: string; }
+const { title = 'Painel', activeSection = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — Painel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-stone-50 min-h-screen" style="font-family:'Poppins',system-ui,sans-serif">
+    <div class="flex min-h-screen">
+      <AdminNav client:load activeSection={activeSection} />
+      <main id="main-content" class="flex-1 min-w-0 ml-64" tabindex="-1">
+        <div class="p-8">
+          <slot />
+        </div>
+      </main>
+    </div>
+    <CmsToaster client:load />
+  </body>
+</html>
