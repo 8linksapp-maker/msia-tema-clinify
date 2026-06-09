@@ -1,0 +1,54 @@
+---
+export const prerender = false;
+import { validateSession, COOKIE_NAME_EXPORT } from '../../lib/auth';
+const cookie = Astro.cookies.get(COOKIE_NAME_EXPORT)?.value;
+if (cookie && (await validateSession(cookie))) return Astro.redirect('/admin');
+const noSecret = !import.meta.env.ADMIN_SECRET;
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrar — Painel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --p:#0E384C; --a:#FFA800; --b:#E1ECF2; --soft:#EFF8FF; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Poppins', system-ui, sans-serif; margin:0; min-height:100vh; display:grid; place-items:center; background:var(--soft); color:var(--p); }
+    .card { background:#fff; border:1px solid var(--b); border-radius:16px; padding:2rem; width:min(92vw,360px); }
+    h1 { font-size:1.25rem; margin:0 0 1.25rem; }
+    label { font-size:.85rem; font-weight:600; display:block; margin-bottom:.35rem; }
+    input { width:100%; padding:.7rem .9rem; border:1px solid var(--b); border-radius:10px; font:inherit; }
+    button { width:100%; margin-top:1rem; padding:.7rem; border:0; border-radius:999px; background:var(--a); color:var(--p); font-weight:600; cursor:pointer; }
+    .err { color:#b3261e; font-size:.85rem; margin-top:.75rem; min-height:1.2em; }
+    .warn { background:#fff7e6; border:1px solid var(--a); border-radius:10px; padding:.75rem; font-size:.85rem; }
+  </style>
+</head>
+<body>
+  <form class="card" id="f">
+    <h1>Painel da clínica</h1>
+    {noSecret ? (
+      <p class="warn">Configure <code>ADMIN_SECRET</code> no ambiente para ativar o login.</p>
+    ) : (
+      <>
+        <label for="pw">Senha</label>
+        <input id="pw" name="password" type="password" autocomplete="current-password" required />
+        <button type="submit">Entrar</button>
+        <p class="err" id="e"></p>
+      </>
+    )}
+  </form>
+  <script>
+    const f = document.getElementById('f');
+    f?.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const e = document.getElementById('e');
+      const password = (document.getElementById('pw')).value;
+      const r = await fetch('/api/admin/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ password }) });
+      if (r.ok) { location.href = '/admin'; } else { const j = await r.json().catch(()=>({})); e.textContent = j.error || 'Senha incorreta.'; }
+    });
+  </script>
+</body>
+</html>
