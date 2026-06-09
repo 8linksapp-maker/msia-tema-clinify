@@ -1,0 +1,8 @@
+---
+export const prerender = false;
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import SiteConfigEditor from '../../components/admin/SiteConfigEditor';
+---
+<AdminLayout title="Dados da clínica" activeSection="config">
+  <SiteConfigEditor client:load />
+</AdminLayout>
