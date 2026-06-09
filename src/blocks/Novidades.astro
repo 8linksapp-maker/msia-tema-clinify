@@ -1,16 +1,36 @@
 ---
+import { getCollection } from 'astro:content';
 interface Item { title: string; excerpt: string; image?: string; href: string; }
 interface Props { eyebrow?: string; title: string; items?: Item[]; }
 const { eyebrow, title, items = [] } = Astro.props;
+
+let fromCollection: Item[] = [];
+try {
+  const all = await getCollection('blog', ({ data }) => !data.draft);
+  fromCollection = all
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+    .slice(0, 3)
+    .map((p) => ({
+      title: p.data.title,
+      excerpt: p.data.description,
+      image: p.data.heroImage,
+      href: `/blog/${p.id}`,
+    }));
+} catch { /* coleção ainda não disponível */ }
+
+const cards = fromCollection.length > 0 ? fromCollection : items;
 ---
 <section class="section bg-soft">
   <div class="container-x">
-    <div class="max-w-2xl mb-10">
-      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
-      <h2 class="text-3xl md:text-4xl">{title}</h2>
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+      <div class="max-w-2xl">
+        {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+        <h2 class="text-3xl md:text-4xl">{title}</h2>
+      </div>
+      <a href="/blog" class="text-sm font-medium text-accent">Ver todas →</a>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
-      {items.map((p) => (
+      {cards.map((p) => (
         <a href={p.href} class="card overflow-hidden group">
           <div class="aspect-[16/10] bg-surface overflow-hidden">
             {p.image && <img src={p.image} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition" />}
