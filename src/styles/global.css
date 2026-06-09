@@ -27,4 +27,13 @@
   .btn-ghost { @apply btn border border-border text-ink hover:border-primary; }
   .card { @apply bg-surface border border-border rounded-2xl; }
   .ic { @apply inline-grid place-items-center w-12 h-12 rounded-xl bg-soft text-secondary shrink-0; }
+  .prose-clinic { @apply text-ink-muted leading-relaxed text-lg; }
+  .prose-clinic h2 { @apply text-ink text-2xl font-display font-semibold mt-10 mb-3; }
+  .prose-clinic h3 { @apply text-ink text-xl font-display font-semibold mt-8 mb-2; }
+  .prose-clinic p { @apply my-4; }
+  .prose-clinic ul { @apply my-4 pl-5 list-disc space-y-1; }
+  .prose-clinic ol { @apply my-4 pl-5 list-decimal space-y-1; }
+  .prose-clinic a { @apply text-primary underline underline-offset-2 hover:text-secondary; }
+  .prose-clinic blockquote { @apply border-l-4 border-accent pl-4 italic my-6 text-ink; }
+  .prose-clinic strong { @apply text-ink font-semibold; }
 }
