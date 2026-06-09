@@ -4,7 +4,7 @@
       "eyebrow": "Clínica Odontológica",
       "title": "Um sorriso saudável começa com um cuidado gentil.",
       "lead": "Tratamentos modernos, equipe especializada e atendimento humano para toda a família.",
-      "cta": { "label": "Agendar avaliação", "href": "#contato" },
+      "cta": { "label": "Agendar avaliação", "href": "/agendar" },
       "rating": { "score": "5,0", "count": "492 avaliações" },
       "doctor": { "name": "Dra. Clara Lima", "role": "Odontologia Geral", "photo": "/images/doctor.jpg" },
       "contact": { "phone": "(11) 4002-8922", "hours": "Seg a Sáb, 9h às 19h" }
@@ -21,7 +21,7 @@
         "Tecnologia de diagnóstico moderna",
         "Atendimento de urgência"
       ],
-      "cta": { "label": "Conheça a clínica", "href": "#contato" }
+      "cta": { "label": "Conheça a clínica", "href": "/sobre" }
     }},
     { "type": "servicos", "props": {
       "eyebrow": "Nossos serviços",
@@ -32,7 +32,7 @@
         { "title": "Estética dental", "text": "Lentes, facetas e harmonização do sorriso." },
         { "title": "Clareamento", "text": "Sorriso mais branco com segurança." }
       ],
-      "cta": { "label": "Ver todos os serviços", "href": "#contato" }
+      "cta": { "label": "Ver todos os serviços", "href": "/servicos" }
     }},
     { "type": "numeros", "props": {
       "stats": [
