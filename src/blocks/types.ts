@@ -1,4 +1,5 @@
 export const BLOCK_TYPES = [
+  'pageHeader',
   'hero', 'sobre', 'servicos', 'numeros', 'porqueEscolher',
   'comoFunciona', 'equipe', 'depoimentos', 'antesDepois',
   'novidades', 'ctaContato',

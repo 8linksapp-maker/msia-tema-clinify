@@ -1,0 +1,26 @@
+---
+interface Crumb { label: string; href: string; }
+interface Props { eyebrow?: string; title: string; lead?: string; breadcrumb?: Crumb[]; }
+const { eyebrow, title, lead, breadcrumb = [] } = Astro.props;
+---
+<section class="bg-soft">
+  <div class="container-x py-12 md:py-16">
+    {breadcrumb.length > 0 && (
+      <nav aria-label="Trilha" class="mb-4">
+        <ol class="flex flex-wrap items-center gap-2 text-sm text-ink-muted">
+          {breadcrumb.map((c, i) => (
+            <li class="flex items-center gap-2">
+              {i > 0 && <span aria-hidden="true">/</span>}
+              {i < breadcrumb.length - 1
+                ? <a href={c.href} class="hover:text-primary transition">{c.label}</a>
+                : <span class="text-ink" aria-current="page">{c.label}</span>}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h1 class="text-4xl md:text-5xl">{title}</h1>
+    {lead && <p class="mt-4 text-lg max-w-2xl">{lead}</p>}
+  </div>
+</section>

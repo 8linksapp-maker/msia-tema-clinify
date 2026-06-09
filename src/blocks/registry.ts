@@ -1,5 +1,6 @@
 // Mapa type → componente Astro. Astro não expõe um tipo público estável p/
 // componentes, então usamos `unknown` + cast no renderer (seguro: só renderiza).
+import PageHeader from './PageHeader.astro';
 import Hero from './Hero.astro';
 import Sobre from './Sobre.astro';
 import Servicos from './Servicos.astro';
@@ -13,6 +14,7 @@ import Novidades from './Novidades.astro';
 import CtaContato from './CtaContato.astro';
 
 export const blockRegistry: Record<string, unknown> = {
+  pageHeader: PageHeader,
   hero: Hero,
   sobre: Sobre,
   servicos: Servicos,
