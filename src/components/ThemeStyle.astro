@@ -1,0 +1,6 @@
+---
+import { resolveTheme, varsToCss } from '../lib/theme';
+const { vars } = resolveTheme();
+const css = varsToCss(vars);
+---
+<style set:html={css}></style>
