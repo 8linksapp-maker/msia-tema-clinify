@@ -1,110 +1,276 @@
 {
   "blocks": [
-    { "type": "hero", "props": {
-      "eyebrow": "Clínica Odontológica",
-      "title": "Um sorriso saudável começa com um cuidado gentil.",
-      "lead": "Tratamentos modernos, equipe especializada e atendimento humano para toda a família.",
-      "cta": { "label": "Agendar avaliação", "href": "/agendar" },
-      "rating": { "score": "5,0", "count": "492 avaliações" },
-      "doctor": { "name": "Dra. Clara Lima", "role": "Odontologia Geral", "photo": "/images/doctor.jpg" },
-      "contact": { "phone": "(11) 4002-8922", "hours": "Seg a Sáb, 9h às 19h" }
-    }},
-    { "type": "sobre", "props": {
-      "image": "/images/about.jpg",
-      "badge": "15+ anos de experiência",
-      "eyebrow": "Sobre a clínica",
-      "title": "Sua jornada para um sorriso mais saudável.",
-      "lead": "Unimos tecnologia de ponta e um time acolhedor para que cada visita seja tranquila.",
-      "benefits": [
-        "Equipe especializada e atualizada",
-        "Serviços completos em um só lugar",
-        "Tecnologia de diagnóstico moderna",
-        "Atendimento de urgência"
-      ],
-      "cta": { "label": "Conheça a clínica", "href": "/sobre" }
-    }},
-    { "type": "servicos", "props": {
-      "eyebrow": "Nossos serviços",
-      "title": "Tratamentos de alta qualidade para você.",
-      "items": [
-        { "title": "Clínico geral", "text": "Prevenção, limpeza e cuidado de rotina." },
-        { "title": "Implantes", "text": "Reposição de dentes com naturalidade." },
-        { "title": "Estética dental", "text": "Lentes, facetas e harmonização do sorriso." },
-        { "title": "Clareamento", "text": "Sorriso mais branco com segurança." }
-      ],
-      "cta": { "label": "Ver todos os serviços", "href": "/servicos" }
-    }},
-    { "type": "numeros", "props": {
-      "stats": [
-        { "value": "15+", "label": "Anos de experiência" },
-        { "value": "12k", "label": "Pacientes atendidos" },
-        { "value": "18", "label": "Especialistas" },
-        { "value": "98%", "label": "Satisfação" }
-      ]
-    }},
-    { "type": "porqueEscolher", "props": {
-      "eyebrow": "Por que nos escolher",
-      "title": "Cuidado completo para o seu sorriso.",
-      "image": "/images/why.jpg",
-      "features": [
-        { "title": "Profissionais experientes", "text": "Time qualificado e atencioso." },
-        { "title": "Atendimento personalizado", "text": "Plano sob medida para você." },
-        { "title": "Pagamento facilitado", "text": "Condições que cabem no bolso." },
-        { "title": "Urgência", "text": "Atendimento quando você precisa." },
-        { "title": "Avaliações positivas", "text": "Pacientes que recomendam." },
-        { "title": "Tecnologia atual", "text": "Equipamentos de última geração." }
-      ]
-    }},
-    { "type": "comoFunciona", "props": {
-      "eyebrow": "Como funciona",
-      "title": "Três passos para o seu sorriso.",
-      "steps": [
-        { "n": "01", "title": "Agende", "text": "Marque sua avaliação online ou por telefone." },
-        { "n": "02", "title": "Avaliação", "text": "Diagnóstico e plano de tratamento personalizado." },
-        { "n": "03", "title": "Cuidado", "text": "Tratamento com acompanhamento próximo." }
-      ]
-    }},
-    { "type": "equipe", "props": {
-      "eyebrow": "Nossa equipe",
-      "title": "Dentistas que cuidam de você.",
-      "members": [
-        { "name": "Dr. João Reis", "role": "Implantodontia", "photo": "/images/team-1.jpg" },
-        { "name": "Dra. Marina Alves", "role": "Ortodontia", "photo": "/images/team-2.jpg" },
-        { "name": "Dr. Pedro Nunes", "role": "Endodontia", "photo": "/images/team-3.jpg" },
-        { "name": "Dra. Sofia Castro", "role": "Estética", "photo": "/images/team-4.jpg" }
-      ]
-    }},
-    { "type": "depoimentos", "props": {
-      "eyebrow": "Depoimentos",
-      "title": "O que nossos pacientes dizem.",
-      "rating": { "score": "4,9", "label": "média de satisfação" },
-      "items": [
-        { "quote": "Atendimento impecável, saí sorrindo de verdade.", "name": "Roberto L.", "role": "Paciente" },
-        { "quote": "Equipe atenciosa e clínica linda. Recomendo!", "name": "Banson D.", "role": "Paciente" },
-        { "quote": "Resolveram minha urgência no mesmo dia.", "name": "Thomas L.", "role": "Paciente" }
-      ]
-    }},
-    { "type": "antesDepois", "props": {
-      "eyebrow": "Resultados",
-      "title": "Antes e depois.",
-      "items": [
-        { "label": "Clareamento", "before": "/images/before-1.jpg", "after": "/images/after-1.jpg" },
-        { "label": "Facetas", "before": "/images/before-2.jpg", "after": "/images/after-2.jpg" }
-      ]
-    }},
-    { "type": "novidades", "props": {
-      "eyebrow": "Novidades",
-      "title": "Confira nossos artigos.",
-      "items": [
-        { "title": "A importância da consulta regular", "excerpt": "Por que visitar o dentista a cada 6 meses.", "image": "/images/post-1.jpg", "href": "#" },
-        { "title": "5 benefícios do clareamento", "excerpt": "O que muda no seu sorriso.", "image": "/images/post-2.jpg", "href": "#" },
-        { "title": "Implantes: o que você precisa saber", "excerpt": "Tire suas dúvidas sobre o procedimento.", "image": "/images/post-3.jpg", "href": "#" }
-      ]
-    }},
-    { "type": "ctaContato", "props": {
-      "eyebrow": "Fale com a gente",
-      "title": "Agende sua avaliação gratuita.",
-      "services": ["Clínico geral", "Implantes", "Estética dental", "Clareamento", "Ortodontia"]
-    }}
+    {
+      "type": "hero",
+      "props": {
+        "eyebrow": "Clínica De Harmonização",
+        "title": "Um sorriso saudável começa com um cuidado gentil.",
+        "lead": "Tratamentos modernos, equipe especializada e atendimento humano para toda a família.",
+        "cta": {
+          "label": "Agendar avaliação",
+          "href": "/agendar"
+        },
+        "rating": {
+          "score": "5,0",
+          "count": "492 avaliações"
+        },
+        "doctor": {
+          "name": "Dra. Clara Lima",
+          "role": "Odontologia Geral",
+          "photo": "/images/doctor.jpg"
+        },
+        "contact": {
+          "phone": "(11) 4002-8922",
+          "hours": "Seg a Sáb, 9h às 19h"
+        }
+      }
+    },
+    {
+      "type": "sobre",
+      "props": {
+        "image": "/images/about.jpg",
+        "badge": "15+ anos de experiência",
+        "eyebrow": "Sobre a clínica",
+        "title": "Sua jornada para um sorriso mais saudável.",
+        "lead": "Unimos tecnologia de ponta e um time acolhedor para que cada visita seja tranquila.",
+        "benefits": [
+          "Equipe especializada e atualizada",
+          "Serviços completos em um só lugar",
+          "Tecnologia de diagnóstico moderna",
+          "Atendimento de urgência"
+        ],
+        "cta": {
+          "label": "Conheça a clínica",
+          "href": "/sobre"
+        }
+      }
+    },
+    {
+      "type": "servicos",
+      "props": {
+        "eyebrow": "Nossos serviços",
+        "title": "Tratamentos de alta qualidade para você.",
+        "items": [
+          {
+            "title": "Clínico geral",
+            "text": "Prevenção, limpeza e cuidado de rotina."
+          },
+          {
+            "title": "Implantes",
+            "text": "Reposição de dentes com naturalidade."
+          },
+          {
+            "title": "Estética dental",
+            "text": "Lentes, facetas e harmonização do sorriso."
+          },
+          {
+            "title": "Clareamento",
+            "text": "Sorriso mais branco com segurança."
+          }
+        ],
+        "cta": {
+          "label": "Ver todos os serviços",
+          "href": "/servicos"
+        }
+      }
+    },
+    {
+      "type": "numeros",
+      "props": {
+        "stats": [
+          {
+            "value": "15+",
+            "label": "Anos de experiência"
+          },
+          {
+            "value": "12k",
+            "label": "Pacientes atendidos"
+          },
+          {
+            "value": "18",
+            "label": "Especialistas"
+          },
+          {
+            "value": "98%",
+            "label": "Satisfação"
+          }
+        ]
+      }
+    },
+    {
+      "type": "porqueEscolher",
+      "props": {
+        "eyebrow": "Por que nos escolher",
+        "title": "Cuidado completo para o seu sorriso.",
+        "image": "/images/why.jpg",
+        "features": [
+          {
+            "title": "Profissionais experientes",
+            "text": "Time qualificado e atencioso."
+          },
+          {
+            "title": "Atendimento personalizado",
+            "text": "Plano sob medida para você."
+          },
+          {
+            "title": "Pagamento facilitado",
+            "text": "Condições que cabem no bolso."
+          },
+          {
+            "title": "Urgência",
+            "text": "Atendimento quando você precisa."
+          },
+          {
+            "title": "Avaliações positivas",
+            "text": "Pacientes que recomendam."
+          },
+          {
+            "title": "Tecnologia atual",
+            "text": "Equipamentos de última geração."
+          }
+        ]
+      }
+    },
+    {
+      "type": "comoFunciona",
+      "props": {
+        "eyebrow": "Como funciona",
+        "title": "Três passos para o seu sorriso.",
+        "steps": [
+          {
+            "n": "01",
+            "title": "Agende",
+            "text": "Marque sua avaliação online ou por telefone."
+          },
+          {
+            "n": "02",
+            "title": "Avaliação",
+            "text": "Diagnóstico e plano de tratamento personalizado."
+          },
+          {
+            "n": "03",
+            "title": "Cuidado",
+            "text": "Tratamento com acompanhamento próximo."
+          }
+        ]
+      }
+    },
+    {
+      "type": "equipe",
+      "props": {
+        "eyebrow": "Nossa equipe",
+        "title": "Dentistas que cuidam de você.",
+        "members": [
+          {
+            "name": "Dr. João Reis",
+            "role": "Implantodontia",
+            "photo": "/images/team-1.jpg"
+          },
+          {
+            "name": "Dra. Marina Alves",
+            "role": "Ortodontia",
+            "photo": "/images/team-2.jpg"
+          },
+          {
+            "name": "Dr. Pedro Nunes",
+            "role": "Endodontia",
+            "photo": "/images/team-3.jpg"
+          },
+          {
+            "name": "Dra. Sofia Castro",
+            "role": "Estética",
+            "photo": "/images/team-4.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "type": "depoimentos",
+      "props": {
+        "eyebrow": "Depoimentos",
+        "title": "O que nossos pacientes dizem.",
+        "rating": {
+          "score": "4,9",
+          "label": "média de satisfação"
+        },
+        "items": [
+          {
+            "quote": "Atendimento impecável, saí sorrindo de verdade.",
+            "name": "Roberto L.",
+            "role": "Paciente"
+          },
+          {
+            "quote": "Equipe atenciosa e clínica linda. Recomendo!",
+            "name": "Banson D.",
+            "role": "Paciente"
+          },
+          {
+            "quote": "Resolveram minha urgência no mesmo dia.",
+            "name": "Thomas L.",
+            "role": "Paciente"
+          }
+        ]
+      }
+    },
+    {
+      "type": "antesDepois",
+      "props": {
+        "eyebrow": "Resultados",
+        "title": "Antes e depois.",
+        "items": [
+          {
+            "label": "Clareamento",
+            "before": "/images/before-1.jpg",
+            "after": "/images/after-1.jpg"
+          },
+          {
+            "label": "Facetas",
+            "before": "/images/before-2.jpg",
+            "after": "/images/after-2.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "type": "novidades",
+      "props": {
+        "eyebrow": "Novidades",
+        "title": "Confira nossos artigos.",
+        "items": [
+          {
+            "title": "A importância da consulta regular",
+            "excerpt": "Por que visitar o dentista a cada 6 meses.",
+            "image": "/images/post-1.jpg",
+            "href": "#"
+          },
+          {
+            "title": "5 benefícios do clareamento",
+            "excerpt": "O que muda no seu sorriso.",
+            "image": "/images/post-2.jpg",
+            "href": "#"
+          },
+          {
+            "title": "Implantes: o que você precisa saber",
+            "excerpt": "Tire suas dúvidas sobre o procedimento.",
+            "image": "/images/post-3.jpg",
+            "href": "#"
+          }
+        ]
+      }
+    },
+    {
+      "type": "ctaContato",
+      "props": {
+        "eyebrow": "Fale com a gente",
+        "title": "Agende sua avaliação gratuita.",
+        "services": [
+          "Clínico geral",
+          "Implantes",
+          "Estética dental",
+          "Clareamento",
+          "Ortodontia"
+        ]
+      }
+    }
   ]
 }

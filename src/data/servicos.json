@@ -1,0 +1,11 @@
+[
+  { "slug": "implante-dentario", "nome": "Implante dentário", "resumo": "Reposição de dentes com naturalidade e firmeza." },
+  { "slug": "clareamento-dental", "nome": "Clareamento dental", "resumo": "Sorriso mais branco com segurança e acompanhamento." },
+  { "slug": "ortodontia", "nome": "Ortodontia (aparelho)", "resumo": "Alinhamento dos dentes com aparelho fixo ou alinhadores." },
+  { "slug": "lentes-de-contato-dental", "nome": "Lentes de contato dental", "resumo": "Facetas finas para um sorriso harmônico." },
+  { "slug": "tratamento-de-canal", "nome": "Tratamento de canal", "resumo": "Endodontia para salvar o dente com conforto." },
+  { "slug": "limpeza-e-prevencao", "nome": "Limpeza e prevenção", "resumo": "Profilaxia e cuidado de rotina para a saúde bucal." },
+  { "slug": "protese-dentaria", "nome": "Prótese dentária", "resumo": "Reabilitação oral fixa ou removível." },
+  { "slug": "odontopediatria", "nome": "Odontopediatria", "resumo": "Cuidado odontológico gentil para crianças." },
+  { "slug": "urgencia-odontologica", "nome": "Urgência odontológica", "resumo": "Atendimento rápido para dor e emergências." }
+]

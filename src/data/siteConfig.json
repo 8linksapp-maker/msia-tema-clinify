@@ -6,5 +6,16 @@
   "email": "contato@clinicasorriso.com.br",
   "address": "Av. Paulista, 1000 — São Paulo, SP",
   "hours": "Seg a Sáb, 9h às 19h",
-  "social": { "instagram": "#", "facebook": "#", "youtube": "#" }
+  "social": { "instagram": "#", "facebook": "#", "youtube": "#" },
+  "nap": {
+    "streetAddress": "Av. Paulista, 1000",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "postalCode": "01310-100",
+    "country": "BR",
+    "latitude": -23.5613,
+    "longitude": -46.6565,
+    "priceRange": "$$",
+    "mapEmbed": "https://www.google.com/maps?q=Av.+Paulista+1000+S%C3%A3o+Paulo&output=embed"
+  }
 }
