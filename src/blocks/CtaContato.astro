@@ -1,7 +1,7 @@
 ---
 import site from '../data/siteConfig.json';
-interface Props { eyebrow?: string; title: string; services?: string[]; }
-const { eyebrow, title, services = [] } = Astro.props;
+interface Props { eyebrow?: string; title: string; services?: string[]; origem?: string; }
+const { eyebrow, title, services = [], origem } = Astro.props;
 ---
 <section id="contato" class="section">
   <div class="container-x grid gap-10 lg:grid-cols-2 items-start">
@@ -16,6 +16,7 @@ const { eyebrow, title, services = [] } = Astro.props;
       </ul>
     </div>
     <form action="/api/subscribe" method="POST" class="card p-6 grid gap-4">
+      {origem && <input type="hidden" name="origem" value={origem} />}
       <div class="grid sm:grid-cols-2 gap-4">
         <input name="nome" required placeholder="Seu nome" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
         <input name="telefone" required placeholder="Telefone / WhatsApp" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />

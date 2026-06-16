@@ -8,6 +8,7 @@ interface Lead {
   telefone: string;
   email?: string;
   servico?: string;
+  localidade?: string;
   mensagem?: string;
   recebidoEm: string;
   origem: string;
@@ -33,11 +34,15 @@ export const POST: APIRoute = async ({ request }) => {
       return json({ error: 'Nome e telefone são obrigatórios.' }, 400);
     }
 
+    // origem da matriz vem no formato "servico|localidade"; deriva quando presente
+    const [origServico, origLocalidade] = (body.origem || '').split('|');
+
     const lead: Lead = {
       nome,
       telefone,
       email: (body.email || '').trim() || undefined,
-      servico: (body.servico || '').trim() || undefined,
+      servico: (body.servico || origServico || '').trim() || undefined,
+      localidade: (origLocalidade || '').trim() || undefined,
       mensagem: (body.mensagem || '').trim() || undefined,
       recebidoEm: new Date().toISOString(),
       origem: (body.origem || 'site').trim(),
