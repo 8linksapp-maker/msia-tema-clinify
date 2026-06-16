@@ -1,44 +1,14 @@
 ---
 export const prerender = false;
 import AdminLayout from '../../layouts/AdminLayout.astro';
-import { readFileFromRepo } from '../../lib/server-io';
-const raw = await readFileFromRepo('src/data/subscribers.json');
-const leads = (raw ? JSON.parse(raw) : []).slice().reverse();
-const fmt = (iso: string) => { try { return new Date(iso).toLocaleString('pt-BR'); } catch { return iso; } };
+import CmsDashboard from '../../components/admin/CmsDashboard';
+import RepoVisibilityBanner from '../../components/admin/RepoVisibilityBanner';
 ---
-<AdminLayout title="Leads" activeSection="leads">
-  <h1 class="text-2xl font-bold text-stone-900 mb-1">Contatos recebidos</h1>
-  <p class="text-stone-500 text-sm mb-6">{leads.length} {leads.length === 1 ? 'lead' : 'leads'}</p>
-  {leads.length === 0 ? (
-    <div class="bg-white border border-stone-200 rounded-xl p-8 text-center text-stone-500">
-      Nenhum lead ainda. Quando alguém preencher o formulário do site, aparece aqui.
+<AdminLayout title="Início" activeSection="dashboard">
+    <RepoVisibilityBanner client:load />
+    <div class="mb-8">
+        <h1 class="text-xl font-semibold text-adm-ink">Olá! O que fazemos hoje?</h1>
+        <p class="text-sm text-adm-ink-muted mt-1">Escreva, publique e gerencie o seu blog.</p>
     </div>
-  ) : (
-    <div class="bg-white border border-stone-200 rounded-xl overflow-hidden">
-      <table class="w-full text-sm">
-        <thead class="bg-stone-50 text-stone-700">
-          <tr>
-            <th class="text-left px-4 py-3 font-semibold">Recebido</th>
-            <th class="text-left px-4 py-3 font-semibold">Nome</th>
-            <th class="text-left px-4 py-3 font-semibold">Telefone</th>
-            <th class="text-left px-4 py-3 font-semibold">E-mail</th>
-            <th class="text-left px-4 py-3 font-semibold">Serviço</th>
-            <th class="text-left px-4 py-3 font-semibold">Mensagem</th>
-          </tr>
-        </thead>
-        <tbody>
-          {leads.map((l: any) => (
-            <tr class="border-t border-stone-200 align-top">
-              <td class="px-4 py-3 text-stone-600 whitespace-nowrap">{fmt(l.recebidoEm)}</td>
-              <td class="px-4 py-3 text-stone-900">{l.nome}</td>
-              <td class="px-4 py-3 text-stone-600">{l.telefone}</td>
-              <td class="px-4 py-3 text-stone-600">{l.email || '—'}</td>
-              <td class="px-4 py-3">{l.servico ? <span class="bg-teal-50 text-teal-800 rounded-full px-2 py-0.5 text-xs">{l.servico}</span> : '—'}</td>
-              <td class="px-4 py-3 text-stone-600">{l.mensagem || '—'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )}
+    <CmsDashboard client:load />
 </AdminLayout>

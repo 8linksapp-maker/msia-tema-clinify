@@ -51,24 +51,24 @@ export default function CmsToaster() {
                 <div
                     key={toast.id}
                     role={toast.type === 'error' ? 'alert' : 'status'}
-                    className="pointer-events-auto bg-white border border-stone-200 rounded-lg w-80 overflow-hidden"
+                    className="pointer-events-auto bg-adm-surface border border-adm-border rounded-lg w-80 overflow-hidden"
                     style={{ boxShadow: '0 8px 24px rgba(80,40,20,0.12)' }}
                 >
                     <div className="p-4 flex items-start gap-3">
                         <div className="shrink-0 mt-0.5" aria-hidden="true">
-                            {toast.type === 'success'  && <CheckCircle2 className="w-5 h-5 text-teal-800" />}
+                            {toast.type === 'success'  && <CheckCircle2 className="w-5 h-5 text-adm-primary" />}
                             {toast.type === 'error'    && <AlertCircle  className="w-5 h-5 text-red-600" />}
-                            {toast.type === 'info'     && <Info         className="w-5 h-5 text-teal-800" />}
-                            {toast.type === 'progress' && <Loader2      className="w-5 h-5 text-teal-800 animate-spin" aria-label="Carregando" />}
+                            {toast.type === 'info'     && <Info         className="w-5 h-5 text-adm-primary" />}
+                            {toast.type === 'progress' && <Loader2      className="w-5 h-5 text-adm-primary animate-spin" aria-label="Carregando" />}
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-stone-900 leading-snug">{toast.message}</p>
+                            <p className="text-sm font-semibold text-adm-ink leading-snug">{toast.message}</p>
                             {toast.link && (
                                 <a
                                     href={toast.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 bg-teal-50 text-teal-800 hover:bg-teal-800 hover:text-white rounded text-xs font-semibold transition-colors"
+                                    className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 bg-adm-primary-soft text-adm-primary hover:bg-adm-primary hover:text-adm-surface rounded text-xs font-semibold transition-colors"
                                 >
                                     Ver alteração ao vivo
                                     <ExternalLink className="w-3 h-3" aria-hidden="true" />
@@ -79,7 +79,7 @@ export default function CmsToaster() {
                             <button
                                 onClick={() => removeToast(toast.id!)}
                                 aria-label="Fechar notificação"
-                                className="shrink-0 w-8 h-8 flex items-center justify-center text-stone-400 hover:text-stone-900 hover:bg-stone-100 rounded transition-colors"
+                                className="shrink-0 w-8 h-8 flex items-center justify-center text-adm-ink-faint hover:text-adm-ink hover:bg-adm-elev rounded transition-colors"
                             >
                                 <X className="w-4 h-4" aria-hidden="true" />
                             </button>
@@ -92,10 +92,10 @@ export default function CmsToaster() {
                             aria-valuemin={0}
                             aria-valuemax={100}
                             aria-label="Progresso da operação"
-                            className="w-full h-1.5 bg-stone-100"
+                            className="w-full h-1.5 bg-adm-elev"
                         >
                             <div
-                                className="h-full bg-teal-800 transition-all duration-700 ease-out"
+                                className="h-full bg-adm-primary transition-all duration-700 ease-out"
                                 style={{ width: `${toast.progress}%` }}
                             />
                         </div>
