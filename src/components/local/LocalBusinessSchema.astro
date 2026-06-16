@@ -1,0 +1,27 @@
+---
+import site from '../../data/siteConfig.json';
+interface Props { areaServed?: string[]; }
+const { areaServed = [] } = Astro.props;
+const nap = (site as any).nap || {};
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Dentist',
+  name: site.name,
+  telephone: site.phone,
+  email: site.email,
+  url: (site as any).url || undefined,
+  priceRange: nap.priceRange || '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: nap.streetAddress,
+    addressLocality: nap.addressLocality,
+    addressRegion: nap.addressRegion,
+    postalCode: nap.postalCode,
+    addressCountry: nap.country || 'BR',
+  },
+  ...(nap.latitude ? { geo: { '@type': 'GeoCoordinates', latitude: nap.latitude, longitude: nap.longitude } } : {}),
+  ...(areaServed.length ? { areaServed } : {}),
+  openingHours: site.hours,
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
