@@ -1,20 +1,93 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../blocks/BlockRenderer.astro';
+import LocalBusinessSchema from '../components/local/LocalBusinessSchema.astro';
+import ComoNosEncontrar from '../components/local/ComoNosEncontrar.astro';
+import Servicos from '../blocks/Servicos.astro';
+import Novidades from '../blocks/Novidades.astro';
+import CtaContato from '../blocks/CtaContato.astro';
+import site from '../data/siteConfig.json';
 import type { Block } from '../blocks/types';
 
-interface PageData { meta: { title: string; description: string }; blocks: Block[]; }
-
-export function getStaticPaths() {
-  const mods = import.meta.glob('../data/pages/*.json', { eager: true });
-  return Object.entries(mods).map(([path, mod]) => {
+export async function getStaticPaths() {
+  const pageMods: Record<string, any> = import.meta.glob('../data/pages/*.json', { eager: true });
+  const fixed = Object.entries(pageMods).map(([path, mod]) => {
     const slug = path.split('/').pop()!.replace('.json', '');
-    return { params: { slug }, props: { page: (mod as any).default ?? mod } };
+    return { params: { slug }, props: { kind: 'page', page: mod.default ?? mod } };
   });
+
+  const servicos = (await import('../data/servicos.json')).default as any[];
+  const locais = (await import('../data/locais.json')).default as any[];
+  const matrix = [];
+  for (const s of servicos) {
+    for (const l of locais) {
+      matrix.push({
+        params: { slug: `${s.slug}-${l.prep || 'em'}-${l.slug}` },
+        props: { kind: 'local', servico: s, local: l },
+      });
+    }
+  }
+  return [...fixed, ...matrix];
 }
 
-const { page } = Astro.props as { page: PageData };
+const props = Astro.props as any;
+const servicosList = (await import('../data/servicos.json')).default as any[];
 ---
-<BaseLayout title={page.meta.title} description={page.meta.description}>
-  <BlockRenderer blocks={page.blocks} />
-</BaseLayout>
+{props.kind === 'page' ? (
+  <BaseLayout title={props.page.meta.title} description={props.page.meta.description}>
+    <BlockRenderer blocks={props.page.blocks as Block[]} />
+  </BaseLayout>
+) : (
+  <BaseLayout
+    title={`${props.servico.nome} ${props.local.prep || 'em'} ${props.local.nome} — ${site.name}`}
+    description={`${props.servico.nome} ${props.local.prep || 'em'} ${props.local.nome}: ${props.servico.resumo} ${props.local.referenciaLocal}`}
+    ogType="website"
+  >
+    <LocalBusinessSchema areaServed={[props.local.nome, ...(props.local.bairrosVizinhos || [])]} />
+
+    <!-- 1. Hero + CTA WhatsApp -->
+    <section class="bg-soft">
+      <div class="container-x section">
+        <span class="eyebrow">{props.servico.nome}</span>
+        <h1 class="text-4xl md:text-5xl max-w-3xl">{props.servico.nome} {props.local.prep || 'em'} {props.local.nome}</h1>
+        <p class="mt-4 text-lg max-w-2xl">{props.servico.resumo} {props.local.referenciaLocal}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Olá! Quero saber sobre ${props.servico.nome} ${props.local.prep || 'em'} ${props.local.nome}.`)}`} class="btn-accent">Falar no WhatsApp</a>
+          <a href={`tel:${site.phone}`} class="btn-ghost">Ligar agora</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Nossos serviços (9 fixos) -->
+    <Servicos eyebrow="Nossos serviços" title="Tratamentos disponíveis" items={servicosList.map((s) => ({ title: s.nome, text: s.resumo }))} cta={{ label: 'Agendar avaliação', href: '#contato' }} />
+
+    <!-- 3. Sobre / conteúdo único da região (anti-doorway) -->
+    <section class="section">
+      <div class="container-x max-w-3xl">
+        <span class="eyebrow">Atendimento em {props.local.nome}</span>
+        <h2 class="text-3xl">Referência em {props.servico.nome.toLowerCase()} {props.local.prep || 'em'} {props.local.nome}</h2>
+        <p class="mt-4 text-ink-muted">{props.local.referenciaLocal} Atendemos também {(props.local.bairrosVizinhos || []).join(', ')}.</p>
+        {props.local.faq?.length > 0 && (
+          <div class="mt-8 space-y-4">
+            <h3 class="text-xl">Perguntas frequentes</h3>
+            {props.local.faq.map((f: any) => (
+              <details class="border-b border-border pb-3">
+                <summary class="font-medium text-ink cursor-pointer">{f.q}</summary>
+                <p class="mt-2 text-ink-muted">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- 4. Como nos encontrar (mapa + NAP + schema acima) -->
+    <ComoNosEncontrar />
+
+    <!-- 5. Últimas do blog -->
+    <Novidades eyebrow="Novidades" title="Conteúdo para o seu sorriso" />
+
+    <!-- 6. Contato (form grava lead com atribuição) -->
+    <CtaContato eyebrow="Fale com a gente" title={`Agende ${props.servico.nome.toLowerCase()} ${props.local.prep || 'em'} ${props.local.nome}`} services={servicosList.map((s) => s.nome)} origem={`${props.servico.slug}|${props.local.slug}`} />
+  </BaseLayout>
+)}
