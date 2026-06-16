@@ -1,0 +1,12 @@
+---
+export const prerender = false;
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import LocaisEditor from '../../components/admin/LocaisEditor';
+---
+<AdminLayout title="Localidades" activeSection="localidades">
+    <div class="mb-8">
+        <h1 class="text-2xl font-bold text-adm-ink">Localidades</h1>
+        <p class="text-adm-ink-muted mt-1 text-sm">Gerencie os bairros e regiões para SEO local — cada localidade gera uma landing page otimizada.</p>
+    </div>
+    <LocaisEditor client:load />
+</AdminLayout>

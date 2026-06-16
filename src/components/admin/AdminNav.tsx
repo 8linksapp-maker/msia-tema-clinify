@@ -3,7 +3,7 @@ import {
     FileText, Tag, Users, Info, Phone,
     Shield, Settings, LogOut, ExternalLink, Navigation,
     Package, FileArchive, PenLine, ChevronRight, Home, Sparkles, Palette,
-    Building2, LayoutDashboard, Layers,
+    Building2, LayoutDashboard, Layers, Stethoscope, MapPin,
 } from 'lucide-react';
 
 interface NavItem {
@@ -134,6 +134,13 @@ export default function AdminNav({ activeSection = '', extraItems = [] }: AdminN
                     <NavLink item={{ label: 'Sobre', href: '/admin/pagina-sobre', icon: Info, section: 'pagina-sobre' }} active={activeSection === 'pagina-sobre'} />
                     <NavLink item={{ label: 'Contato', href: '/admin/pagina-contato', icon: Phone, section: 'pagina-contato' }} active={activeSection === 'pagina-contato'} />
                     <NavLink item={{ label: 'Agendar', href: '/admin/pagina-agendar', icon: Home, section: 'pagina-agendar' }} active={activeSection === 'pagina-agendar'} />
+                </div>
+
+                {/* SEO Local */}
+                <div className="mb-5" role="group" aria-labelledby="nav-seo-local">
+                    <p id="nav-seo-local" className="text-[10px] font-bold text-adm-ink-faint uppercase tracking-widest px-3 mb-1.5">SEO Local</p>
+                    <NavLink item={{ label: 'Serviços', href: '/admin/servicos', icon: Stethoscope, section: 'servicos' }} active={activeSection === 'servicos'} />
+                    <NavLink item={{ label: 'Localidades', href: '/admin/localidades', icon: MapPin, section: 'localidades' }} active={activeSection === 'localidades'} />
                 </div>
 
                 {/* Páginas */}

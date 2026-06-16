@@ -3,7 +3,26 @@
   "completed_at": "2026-06-16T00:00:00.000Z",
   "slug": "clinify",
   "notes": "Contexto diverge do fluxo padrão: não há tema standalone com conteúdo hardcoded em lib/content.ts ou lib/cms.ts. O conteúdo editável já existe em src/data/*.json e src/data/pages/*.json com dados reais. Os schemas foram extraídos diretamente da estrutura desses JSONs. Nenhum JSON de dados foi sobrescrito. O campo 'pubDate' em alguns posts usa string sem aspas no YAML (ex: 2026-05-22) — o schema aceita z.string() para cobrir ambas as formas depois de parsing pelo Astro. theme.json excluído conforme instrução (já tem ThemeEditor).",
-  "collections_created": [],
+  "collections_created": [
+    {
+      "type": "servicos",
+      "label": "Serviços",
+      "items": 9,
+      "json": "src/data/servicos.json",
+      "schema": "src/lib/schemas/servicos.ts",
+      "action": "schema-only",
+      "fields": ["slug", "nome", "resumo"]
+    },
+    {
+      "type": "locais",
+      "label": "Localidades",
+      "items": 3,
+      "json": "src/data/locais.json",
+      "schema": "src/lib/schemas/locais.ts",
+      "action": "schema-only",
+      "fields": ["slug", "nome", "prep", "regiao", "bairrosVizinhos", "referenciaLocal", "faq[{q,a}]"]
+    }
+  ],
   "singletons_mapped": [
     {
       "type": "siteConfig",
