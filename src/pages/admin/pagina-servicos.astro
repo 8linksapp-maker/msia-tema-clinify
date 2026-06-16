@@ -1,0 +1,12 @@
+---
+export const prerender = false;
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import PageEditor from '../../components/admin/PageEditor';
+---
+<AdminLayout title="Página Serviços" activeSection="pagina-servicos">
+    <div class="mb-6">
+        <h1 class="text-2xl font-bold text-adm-ink">Página Serviços</h1>
+        <p class="text-adm-ink-muted mt-1 text-sm">Conteúdo e SEO da página <code class="bg-adm-elev px-1 rounded text-xs">/servicos</code>.</p>
+    </div>
+    <PageEditor client:load dataPath="src/data/pages/servicos.json" isHome={false} pageLabel="Serviços — blocos" />
+</AdminLayout>

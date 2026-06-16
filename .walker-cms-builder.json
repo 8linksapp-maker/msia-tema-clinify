@@ -1,0 +1,50 @@
+{
+  "agent": "walker-cms-builder",
+  "completed_at": "2026-06-16T00:00:00.000Z",
+  "slug": "clinify",
+  "editors_created": [
+    {
+      "type": "siteConfig",
+      "component": "src/components/admin/SiteConfigEditor.tsx",
+      "page": "src/pages/admin/dados-clinica.astro"
+    },
+    {
+      "type": "homePage",
+      "component": "src/components/admin/PageEditor.tsx",
+      "page": "src/pages/admin/home.astro",
+      "notes": "PageEditor é reutilizável — parametrizado por dataPath + isHome"
+    },
+    {
+      "type": "pageServicos",
+      "component": "src/components/admin/PageEditor.tsx",
+      "page": "src/pages/admin/pagina-servicos.astro"
+    },
+    {
+      "type": "pageEquipe",
+      "component": "src/components/admin/PageEditor.tsx",
+      "page": "src/pages/admin/pagina-equipe.astro"
+    },
+    {
+      "type": "pageSobre",
+      "component": "src/components/admin/PageEditor.tsx",
+      "page": "src/pages/admin/pagina-sobre.astro"
+    },
+    {
+      "type": "pageContato",
+      "component": "src/components/admin/PageEditor.tsx",
+      "page": "src/pages/admin/pagina-contato.astro"
+    },
+    {
+      "type": "pageAgendar",
+      "component": "src/components/admin/PageEditor.tsx",
+      "page": "src/pages/admin/pagina-agendar.astro"
+    }
+  ],
+  "singletons_checked": ["siteConfig", "homePage", "pageServicos", "pageEquipe", "pageSobre", "pageContato", "pageAgendar"],
+  "singleton_editors_regenerated": [],
+  "admin_nav_updated": true,
+  "admin_nav_section": "Conteúdo do site",
+  "posts_editor": "não recriado — PostEditor.tsx/PostsManager.tsx existentes do walker base foram preservados",
+  "image_fields": "campos de imagem (photo, image, before, after) usam input type=text com path por enquanto — ImageUploadField pode ser adicionado em iteração futura sem quebrar JSON existente",
+  "notes": "PageEditor é um único componente parametrizado por dataPath e isHome, cobrindo todos os 6 JSONs de página (1 home + 5 inner pages). Suporta edição, reordenação (move up/down) e remoção de blocos existentes. Adição de novo bloco não implementada nesta fase (precisaria de UI de seleção de tipo + defaults por tipo — anotado pra iteração futura)."
+}

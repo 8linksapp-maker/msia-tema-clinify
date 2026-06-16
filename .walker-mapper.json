@@ -1,0 +1,129 @@
+{
+  "agent": "walker-mapper",
+  "completed_at": "2026-06-16T00:00:00.000Z",
+  "slug": "clinify",
+  "notes": "Contexto diverge do fluxo padrão: não há tema standalone com conteúdo hardcoded em lib/content.ts ou lib/cms.ts. O conteúdo editável já existe em src/data/*.json e src/data/pages/*.json com dados reais. Os schemas foram extraídos diretamente da estrutura desses JSONs. Nenhum JSON de dados foi sobrescrito. O campo 'pubDate' em alguns posts usa string sem aspas no YAML (ex: 2026-05-22) — o schema aceita z.string() para cobrir ambas as formas depois de parsing pelo Astro. theme.json excluído conforme instrução (já tem ThemeEditor).",
+  "collections_created": [],
+  "singletons_mapped": [
+    {
+      "type": "siteConfig",
+      "label": "Dados da clínica",
+      "json": "src/data/siteConfig.json",
+      "schema": "src/lib/schemas/siteConfig.ts",
+      "action": "schema-only",
+      "fields": ["name", "description", "phone", "whatsapp", "email", "address", "hours", "social.instagram", "social.facebook", "social.youtube"]
+    },
+    {
+      "type": "homePage",
+      "label": "Home — blocos de conteúdo",
+      "json": "src/data/page.json",
+      "schema": "src/lib/schemas/page.ts",
+      "schemaExport": "homePageSchema",
+      "action": "schema-only",
+      "blockTypes": ["hero", "sobre", "servicos", "numeros", "porqueEscolher", "comoFunciona", "equipe", "depoimentos", "antesDepois", "novidades", "ctaContato"]
+    },
+    {
+      "type": "pageServicos",
+      "label": "Página Serviços",
+      "json": "src/data/pages/servicos.json",
+      "schema": "src/lib/schemas/page.ts",
+      "schemaExport": "innerPageSchema",
+      "action": "schema-only",
+      "blockTypes": ["pageHeader", "servicos", "porqueEscolher", "ctaContato"]
+    },
+    {
+      "type": "pageEquipe",
+      "label": "Página Equipe",
+      "json": "src/data/pages/equipe.json",
+      "schema": "src/lib/schemas/page.ts",
+      "schemaExport": "innerPageSchema",
+      "action": "schema-only",
+      "blockTypes": ["pageHeader", "equipe", "numeros", "ctaContato"]
+    },
+    {
+      "type": "pageSobre",
+      "label": "Página Sobre",
+      "json": "src/data/pages/sobre.json",
+      "schema": "src/lib/schemas/page.ts",
+      "schemaExport": "innerPageSchema",
+      "action": "schema-only",
+      "blockTypes": ["pageHeader", "sobre", "numeros", "comoFunciona", "depoimentos", "ctaContato"]
+    },
+    {
+      "type": "pageContato",
+      "label": "Página Contato",
+      "json": "src/data/pages/contato.json",
+      "schema": "src/lib/schemas/page.ts",
+      "schemaExport": "innerPageSchema",
+      "action": "schema-only",
+      "blockTypes": ["pageHeader", "ctaContato"]
+    },
+    {
+      "type": "pageAgendar",
+      "label": "Página Agendar",
+      "json": "src/data/pages/agendar.json",
+      "schema": "src/lib/schemas/page.ts",
+      "schemaExport": "innerPageSchema",
+      "action": "schema-only",
+      "blockTypes": ["pageHeader", "comoFunciona", "ctaContato"]
+    }
+  ],
+  "content_schemas": [
+    {
+      "type": "blogPost",
+      "label": "Posts do blog (frontmatter)",
+      "source": "src/content/blog/*.md",
+      "schema": "src/lib/schemas/post.ts",
+      "schemaExport": "postFrontmatterSchema",
+      "action": "schema-only",
+      "fields": ["title", "description", "pubDate", "category", "heroImage", "author", "draft"]
+    }
+  ],
+  "skipped": [
+    {
+      "type": "theme",
+      "json": "src/data/theme.json",
+      "reason": "Excluído por instrução explícita — já tem ThemeEditor dedicado, não mapear."
+    },
+    {
+      "type": "menu",
+      "json": "src/data/menu.json",
+      "reason": "Walker base já tem MenuEditor. JSON existente com conteúdo real — não reprocessar."
+    },
+    {
+      "type": "sobre",
+      "json": "src/data/sobre.json",
+      "reason": "Walker base já tem SobreEditor. JSON existente com conteúdo real — não reprocessar."
+    },
+    {
+      "type": "contato",
+      "json": "src/data/contato.json",
+      "reason": "Walker base já tem ContatoEditor. JSON existente com conteúdo real — não reprocessar."
+    },
+    {
+      "type": "authors",
+      "json": "src/data/authors.json",
+      "reason": "Walker base já tem AuthorsEditor. JSON existente."
+    },
+    {
+      "type": "categories",
+      "json": "src/data/categories.json",
+      "reason": "Walker base já tem CategoriesEditor. JSON existente."
+    },
+    {
+      "type": "pluginsConfig",
+      "json": "src/data/pluginsConfig.json",
+      "reason": "Gerenciado pelo PluginsHub do walker — fora do escopo deste mapper."
+    },
+    {
+      "type": "privacy",
+      "json": "src/data/privacy.json",
+      "reason": "Walker base já tem LegalEditor (termos + privacidade)."
+    },
+    {
+      "type": "terms",
+      "json": "src/data/terms.json",
+      "reason": "Walker base já tem LegalEditor. JSON existente."
+    }
+  ]
+}
