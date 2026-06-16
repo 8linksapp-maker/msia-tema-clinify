@@ -2,7 +2,7 @@ import React from 'react';
 import {
     FileText, Tag, Users, Info, Phone,
     Shield, Settings, LogOut, ExternalLink, Navigation,
-    Package, FileArchive, PenLine, ChevronRight, Home, Sparkles,
+    Package, FileArchive, PenLine, ChevronRight, Home, Sparkles, Palette,
 } from 'lucide-react';
 
 interface NavItem {
@@ -15,6 +15,7 @@ interface NavItem {
 const contentSections = ['posts', 'categories', 'authors'];
 
 const pageItems: NavItem[] = [
+    { label: 'Tema do site', href: '/admin/tema', icon: Palette, section: 'tema' },
     { label: 'Navegação do site', href: '/admin/menu', icon: Navigation, section: 'menu' },
     { label: 'Sobre', href: '/admin/sobre', icon: Info, section: 'sobre' },
     { label: 'Contato', href: '/admin/contato', icon: Phone, section: 'contato' },

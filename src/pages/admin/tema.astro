@@ -1,0 +1,8 @@
+---
+export const prerender = false;
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import ThemeEditor from '../../components/admin/ThemeEditor';
+---
+<AdminLayout title="Tema" activeSection="tema">
+  <ThemeEditor client:load />
+</AdminLayout>
