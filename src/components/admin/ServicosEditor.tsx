@@ -3,11 +3,26 @@ import { Save, AlertCircle, Loader2, Plus, Trash2, Stethoscope } from 'lucide-re
 import { triggerToast } from './CmsToaster';
 import { githubApi } from '../../lib/adminApi';
 
+interface Topico {
+    nivel: 'h2' | 'h3' | 'h4';
+    titulo: string;
+    conteudo: string;
+}
+
 interface ServicoItem {
     slug: string;
     nome: string;
     resumo: string;
-    topicos: string[];
+    topicos: Topico[];
+}
+
+function normalizeTopico(t: any): Topico {
+    if (typeof t === 'string') return { nivel: 'h2', titulo: t, conteudo: '' };
+    return {
+        nivel: (t?.nivel === 'h3' || t?.nivel === 'h4') ? t.nivel : 'h2',
+        titulo: t?.titulo || '',
+        conteudo: t?.conteudo || '',
+    };
 }
 
 const EMPTY_SERVICO: ServicoItem = { slug: '', nome: '', resumo: '', topicos: [] };
@@ -35,7 +50,7 @@ export default function ServicosEditor() {
             .then(data => {
                 const parsed = JSON.parse(data?.content || '[]');
                 const normalized = Array.isArray(parsed)
-                    ? parsed.map((it: any) => ({ ...it, topicos: Array.isArray(it.topicos) ? it.topicos : [] }))
+                    ? parsed.map((it: any) => ({ ...it, topicos: Array.isArray(it.topicos) ? it.topicos.map(normalizeTopico) : [] }))
                     : [];
                 setItems(normalized);
                 setFileSha(data.sha);
@@ -99,13 +114,13 @@ export default function ServicosEditor() {
 
     // Tópicos helpers
     const addTopico = (idx: number) => {
-        setItems(items.map((it, i) => i === idx ? { ...it, topicos: [...it.topicos, ''] } : it));
+        setItems(items.map((it, i) => i === idx ? { ...it, topicos: [...it.topicos, { nivel: 'h2', titulo: '', conteudo: '' } as Topico] } : it));
     };
 
-    const updateTopico = (servicoIdx: number, topicoIdx: number, value: string) => {
+    const updateTopico = (servicoIdx: number, topicoIdx: number, campo: keyof Topico, valor: string) => {
         setItems(items.map((it, i) => {
             if (i !== servicoIdx) return it;
-            const topicos = it.topicos.map((t, ti) => ti === topicoIdx ? value : t);
+            const topicos = it.topicos.map((t, ti) => ti === topicoIdx ? { ...t, [campo]: valor } : t);
             return { ...it, topicos };
         }));
     };
@@ -236,29 +251,49 @@ export default function ServicosEditor() {
                                         <Plus className="w-3.5 h-3.5" aria-hidden="true" /> Adicionar tópico
                                     </button>
                                 </div>
-                                <p className="text-[10px] text-adm-ink-faint mb-2">Viram os títulos (H2) do roteiro nas páginas de SEO local.</p>
+                                <p className="text-[10px] text-adm-ink-faint mb-2">Viram os cabeçalhos (H2/H3/H4) do roteiro nas páginas de SEO local. O conteúdo aceita Markdown.</p>
                                 {item.topicos.length === 0 ? (
                                     <p className="text-xs text-adm-ink-faint italic py-2">Nenhum tópico cadastrado.</p>
                                 ) : (
-                                    <div className="space-y-2">
+                                    <div className="space-y-3">
                                         {item.topicos.map((topico, tIdx) => (
-                                            <div key={tIdx} className="flex items-center gap-2">
-                                                <input
-                                                    type="text"
-                                                    value={topico}
-                                                    onChange={e => updateTopico(idx, tIdx, e.target.value)}
-                                                    className={subInputClass}
-                                                    placeholder="Ex: O que é o implante dentário"
-                                                    aria-label={`Tópico ${tIdx + 1}`}
+                                            <div key={tIdx} className="p-3 bg-adm-elev border border-adm-border rounded-md space-y-2">
+                                                <div className="flex items-center gap-2">
+                                                    <select
+                                                        value={topico.nivel}
+                                                        onChange={e => updateTopico(idx, tIdx, 'nivel', e.target.value)}
+                                                        aria-label={`Nível do tópico ${tIdx + 1}`}
+                                                        className="bg-adm-surface border border-adm-border rounded-md px-2 py-2.5 text-sm text-adm-ink font-semibold focus:outline-none focus:border-adm-primary focus:ring-2 focus:ring-adm-primary/20 transition-all shrink-0"
+                                                    >
+                                                        <option value="h2">H2</option>
+                                                        <option value="h3">H3</option>
+                                                        <option value="h4">H4</option>
+                                                    </select>
+                                                    <input
+                                                        type="text"
+                                                        value={topico.titulo}
+                                                        onChange={e => updateTopico(idx, tIdx, 'titulo', e.target.value)}
+                                                        className={subInputClass}
+                                                        placeholder="Ex: O que é o implante dentário"
+                                                        aria-label={`Título do tópico ${tIdx + 1}`}
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => removeTopico(idx, tIdx)}
+                                                        aria-label={`Remover tópico ${topico.titulo || tIdx + 1}`}
+                                                        className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-adm-ink-faint hover:text-red-600 hover:bg-red-50 rounded-lg transition-all shrink-0"
+                                                    >
+                                                        <Trash2 className="w-4 h-4" aria-hidden="true" />
+                                                    </button>
+                                                </div>
+                                                <textarea
+                                                    rows={3}
+                                                    value={topico.conteudo}
+                                                    onChange={e => updateTopico(idx, tIdx, 'conteudo', e.target.value)}
+                                                    className={`${subInputClass} resize-y w-full`}
+                                                    placeholder="Conteúdo do tópico (Markdown opcional)..."
+                                                    aria-label={`Conteúdo do tópico ${tIdx + 1}`}
                                                 />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => removeTopico(idx, tIdx)}
-                                                    aria-label={`Remover tópico ${topico || tIdx + 1}`}
-                                                    className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-adm-ink-faint hover:text-red-600 hover:bg-red-50 rounded-lg transition-all shrink-0"
-                                                >
-                                                    <Trash2 className="w-4 h-4" aria-hidden="true" />
-                                                </button>
                                             </div>
                                         ))}
                                     </div>

@@ -1,11 +1,65 @@
 [
-  { "slug": "implante-dentario", "nome": "Implante dentário", "resumo": "Reposição de dentes com naturalidade e firmeza.", "topicos": ["O que é o implante dentário", "Quando o implante é indicado", "Como é feito o procedimento", "Recuperação e cuidados", "Quanto custa um implante"] },
-  { "slug": "clareamento-dental", "nome": "Clareamento dental", "resumo": "Sorriso mais branco com segurança e acompanhamento.", "topicos": ["Tipos de clareamento", "Clareamento a laser x caseiro", "Quanto tempo dura o resultado", "Cuidados após o clareamento", "É seguro para os dentes?"] },
-  { "slug": "ortodontia", "nome": "Ortodontia (aparelho)", "resumo": "Alinhamento dos dentes com aparelho fixo ou alinhadores.", "topicos": ["Aparelho fixo x alinhadores", "Quando usar aparelho", "Tempo de tratamento", "Manutenção e ajustes", "Cuidados com a higiene"] },
-  { "slug": "lentes-de-contato-dental", "nome": "Lentes de contato dental", "resumo": "Facetas finas para um sorriso harmônico.", "topicos": ["O que são lentes de contato dental", "Lentes x facetas", "Como é a aplicação", "Durabilidade e manutenção", "Indicações e contraindicações"] },
-  { "slug": "tratamento-de-canal", "nome": "Tratamento de canal", "resumo": "Endodontia para salvar o dente com conforto.", "topicos": ["O que é tratamento de canal", "Quando o canal é necessário", "Como é o procedimento", "Dói fazer canal?", "Recuperação"] },
-  { "slug": "limpeza-e-prevencao", "nome": "Limpeza e prevenção", "resumo": "Profilaxia e cuidado de rotina para a saúde bucal.", "topicos": ["O que inclui a limpeza profissional", "Com que frequência fazer", "Prevenção de cáries e gengivite", "Profilaxia x raspagem", "Cuidados em casa"] },
-  { "slug": "protese-dentaria", "nome": "Prótese dentária", "resumo": "Reabilitação oral fixa ou removível.", "topicos": ["Tipos de prótese", "Prótese fixa x removível", "Como é a adaptação", "Manutenção e durabilidade", "Quando a prótese é indicada"] },
-  { "slug": "odontopediatria", "nome": "Odontopediatria", "resumo": "Cuidado odontológico gentil para crianças.", "topicos": ["Primeira consulta da criança", "Prevenção de cáries infantis", "Tratamentos mais comuns", "Como lidar com o medo do dentista", "Cuidados em casa"] },
-  { "slug": "urgencia-odontologica", "nome": "Urgência odontológica", "resumo": "Atendimento rápido para dor e emergências.", "topicos": ["Quando procurar urgência", "Dor de dente: o que fazer", "Trauma e dente quebrado", "Atendimento no mesmo dia", "Como evitar emergências"] }
+  { "slug": "implante-dentario", "nome": "Implante dentário", "resumo": "Reposição de dentes com naturalidade e firmeza.", "topicos": [
+    { "nivel": "h2", "titulo": "O que é o implante dentário", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Quando o implante é indicado", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Como é feito o procedimento", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Recuperação e cuidados", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Quanto custa um implante", "conteudo": "" }
+  ] },
+  { "slug": "clareamento-dental", "nome": "Clareamento dental", "resumo": "Sorriso mais branco com segurança e acompanhamento.", "topicos": [
+    { "nivel": "h2", "titulo": "Tipos de clareamento", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Clareamento a laser x caseiro", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Quanto tempo dura o resultado", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Cuidados após o clareamento", "conteudo": "" },
+    { "nivel": "h2", "titulo": "É seguro para os dentes?", "conteudo": "" }
+  ] },
+  { "slug": "ortodontia", "nome": "Ortodontia (aparelho)", "resumo": "Alinhamento dos dentes com aparelho fixo ou alinhadores.", "topicos": [
+    { "nivel": "h2", "titulo": "Aparelho fixo x alinhadores", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Quando usar aparelho", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Tempo de tratamento", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Manutenção e ajustes", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Cuidados com a higiene", "conteudo": "" }
+  ] },
+  { "slug": "lentes-de-contato-dental", "nome": "Lentes de contato dental", "resumo": "Facetas finas para um sorriso harmônico.", "topicos": [
+    { "nivel": "h2", "titulo": "O que são lentes de contato dental", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Lentes x facetas", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Como é a aplicação", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Durabilidade e manutenção", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Indicações e contraindicações", "conteudo": "" }
+  ] },
+  { "slug": "tratamento-de-canal", "nome": "Tratamento de canal", "resumo": "Endodontia para salvar o dente com conforto.", "topicos": [
+    { "nivel": "h2", "titulo": "O que é tratamento de canal", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Quando o canal é necessário", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Como é o procedimento", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Dói fazer canal?", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Recuperação", "conteudo": "" }
+  ] },
+  { "slug": "limpeza-e-prevencao", "nome": "Limpeza e prevenção", "resumo": "Profilaxia e cuidado de rotina para a saúde bucal.", "topicos": [
+    { "nivel": "h2", "titulo": "O que inclui a limpeza profissional", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Com que frequência fazer", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Prevenção de cáries e gengivite", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Profilaxia x raspagem", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Cuidados em casa", "conteudo": "" }
+  ] },
+  { "slug": "protese-dentaria", "nome": "Prótese dentária", "resumo": "Reabilitação oral fixa ou removível.", "topicos": [
+    { "nivel": "h2", "titulo": "Tipos de prótese", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Prótese fixa x removível", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Como é a adaptação", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Manutenção e durabilidade", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Quando a prótese é indicada", "conteudo": "" }
+  ] },
+  { "slug": "odontopediatria", "nome": "Odontopediatria", "resumo": "Cuidado odontológico gentil para crianças.", "topicos": [
+    { "nivel": "h2", "titulo": "Primeira consulta da criança", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Prevenção de cáries infantis", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Tratamentos mais comuns", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Como lidar com o medo do dentista", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Cuidados em casa", "conteudo": "" }
+  ] },
+  { "slug": "urgencia-odontologica", "nome": "Urgência odontológica", "resumo": "Atendimento rápido para dor e emergências.", "topicos": [
+    { "nivel": "h2", "titulo": "Quando procurar urgência", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Dor de dente: o que fazer", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Trauma e dente quebrado", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Atendimento no mesmo dia", "conteudo": "" },
+    { "nivel": "h2", "titulo": "Como evitar emergências", "conteudo": "" }
+  ] }
 ]

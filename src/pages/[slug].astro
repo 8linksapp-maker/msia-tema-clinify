@@ -8,6 +8,7 @@ import Novidades from '../blocks/Novidades.astro';
 import CtaContato from '../blocks/CtaContato.astro';
 import site from '../data/siteConfig.json';
 import type { Block } from '../blocks/types';
+import { marked } from 'marked';
 
 export async function getStaticPaths() {
   const pageMods: Record<string, any> = import.meta.glob('../data/pages/*.json', { eager: true });
@@ -87,15 +88,18 @@ const servicosList = (await import('../data/servicos.json')).default as any[];
         <div class="container-x max-w-3xl">
           <span class="eyebrow">Guia completo</span>
           <h2 class="text-3xl">{props.servico.nome} {props.local.prep || 'em'} {props.local.nome}: o que você precisa saber</h2>
-          <div class="mt-8 space-y-10">
-            {props.servico.topicos.map((t: string) => (
-              <div>
-                <h2 class="text-2xl text-ink">{t}</h2>
-                <p class="mt-2 text-ink-muted">
-                  Tudo sobre {t.toLowerCase()} no atendimento de {props.servico.nome.toLowerCase()} {props.local.prep || 'em'} {props.local.nome}. {props.local.referenciaLocal}
-                </p>
-              </div>
-            ))}
+          <div class="mt-8 space-y-8">
+            {props.servico.topicos.map((t: any) => {
+              const item = typeof t === 'string' ? { nivel: 'h2', titulo: t, conteudo: '' } : t;
+              const Heading: any = ['h2', 'h3', 'h4'].includes(item.nivel) ? item.nivel : 'h2';
+              const size = item.nivel === 'h3' ? 'text-xl' : item.nivel === 'h4' ? 'text-lg' : 'text-2xl';
+              return (
+                <div>
+                  <Heading class={`${size} text-ink font-display font-semibold`}>{item.titulo}</Heading>
+                  {item.conteudo && <div class="prose-clinic mt-2" set:html={marked.parse(item.conteudo)} />}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
