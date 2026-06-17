@@ -1,17 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../blocks/BlockRenderer.astro';
+import PostArticle from '../components/PostArticle.astro';
+import { getCollection } from 'astro:content';
+import { BLOG_BASE } from '../lib/postUrl';
+import site from '../data/siteConfig.json';
 import type { Block } from '../blocks/types';
 
 export async function getStaticPaths() {
   const pageMods: Record<string, any> = import.meta.glob('../data/pages/*.json', { eager: true });
-  return Object.entries(pageMods).map(([path, mod]) => {
+  const pages = Object.entries(pageMods).map(([path, mod]) => {
     const slug = path.split('/').pop()!.replace('.json', '');
-    return { params: { slug }, props: { page: mod.default ?? mod } };
+    return { params: { slug }, props: { kind: 'page', page: mod.default ?? mod } };
   });
+  let posts: any[] = [];
+  if (BLOG_BASE === '') {
+    const all = await getCollection('blog', ({ data }) => !data.draft);
+    posts = all.map((post) => ({ params: { slug: post.id }, props: { kind: 'post', post } }));
+  }
+  return [...pages, ...posts];
 }
-const { page } = Astro.props as any;
+const props = Astro.props as any;
 ---
-<BaseLayout title={page.meta.title} description={page.meta.description}>
-  <BlockRenderer blocks={page.blocks as Block[]} />
-</BaseLayout>
+{props.kind === 'post' ? (
+  <BaseLayout title={`${props.post.data.title} — ${site.name}`} description={props.post.data.description} ogType="article">
+    <PostArticle post={props.post} />
+  </BaseLayout>
+) : (
+  <BaseLayout title={props.page.meta.title} description={props.page.meta.description}>
+    <BlockRenderer blocks={props.page.blocks as Block[]} />
+  </BaseLayout>
+)}

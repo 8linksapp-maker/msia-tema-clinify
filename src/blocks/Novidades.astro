@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { postUrl } from '../lib/postUrl';
 interface Item { title: string; excerpt: string; image?: string; href: string; }
 interface Props { eyebrow?: string; title: string; items?: Item[]; }
 const { eyebrow, title, items = [] } = Astro.props;
@@ -14,7 +15,7 @@ try {
       title: p.data.title,
       excerpt: p.data.description,
       image: p.data.heroImage,
-      href: `/blog/${p.id}`,
+      href: postUrl(p.id),
     }));
 } catch { /* coleção ainda não disponível */ }
 
