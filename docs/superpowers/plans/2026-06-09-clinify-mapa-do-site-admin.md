@@ -1,3 +1,18 @@
+# Clinify — Mapa do site no admin (todas as páginas + URLs) Plan
+
+> Use superpowers:executing-plans. Branch: `cms-scaffold-completo`.
+
+**Goal:** Uma página no `/admin` que lista TODAS as páginas geradas (matriz serviço×localidade + páginas fixas + blog) com suas URLs clicáveis, pra revisar conteúdo e analisar. Read-only, server-rendered (igual ao painel de leads). Atualiza sozinha conforme serviços/localidades mudam (lê os dados em runtime).
+
+**Guard-rail:** NÃO tocar frontend/tema/blocos. Só CRIAR `src/pages/admin/paginas.astro` e adicionar 1 link no `AdminNav.tsx`. `bun run build` verde + `bun run test` 8/8.
+
+---
+
+### Task 1: Página `/admin/paginas`
+
+**Files:** Create `src/pages/admin/paginas.astro`
+
+```astro
 ---
 export const prerender = false;
 import AdminLayout from '../../layouts/AdminLayout.astro';
@@ -9,7 +24,7 @@ import { getCollection } from 'astro:content';
 const matriz: { servico: string; localidade: string; url: string }[] = [];
 for (const s of servicos as any[]) {
   for (const l of locais as any[]) {
-    matriz.push({ servico: s.nome, localidade: l.nome, url: `/${l.slug}/${s.slug}` });
+    matriz.push({ servico: s.nome, localidade: l.nome, url: `/${s.slug}-${l.prep || 'em'}-${l.slug}` });
   }
 }
 
@@ -109,3 +124,31 @@ const total = matriz.length + fixas.length + posts.length;
     });
   </script>
 </AdminLayout>
+```
+
+- [ ] **Verificar** — `bun run build` → PASS.
+
+---
+
+### Task 2: Link no AdminNav
+
+**Files:** Modify `src/components/admin/AdminNav.tsx`
+
+- [ ] Adicionar um link **"Páginas do site"** → `/admin/paginas` (key de seção `paginas`), no padrão dos itens existentes — perto do topo (ex: logo após "Leads"/"Início", ou no início da seção "Conteúdo do site"). Ícone do lucide (ex: `ListTree` ou `FileText`). NÃO reescrever o componente.
+
+- [ ] **Verificar** — `bun run build` → PASS.
+
+---
+
+### Task 3: Verificação + commit
+
+- [ ] `bun run build` verde; `bun run test` 8/8.
+- [ ] dev + login (123456) → `/admin/paginas` retorna 200 e lista as URLs da matriz (Grep tool por `implante-dentario-em-pinheiros` no HTML servido).
+- [ ] Guard-rail: git diff só `paginas.astro` (novo) + `AdminNav.tsx`.
+- [ ] Commit: `git add src/pages/admin/paginas.astro src/components/admin/AdminNav.tsx && git commit -m "feat(cms): mapa do site no admin (todas as páginas + URLs)"`
+
+## Critério de pronto
+- [ ] `/admin/paginas` lista matriz + fixas + blog, com URLs clicáveis (abrir em nova aba) e busca/filtro
+- [ ] Contadores corretos; atualiza conforme serviços/localidades (lê dados em runtime)
+- [ ] Build verde, test 8/8, frontend intocado, link no menu
+</content>

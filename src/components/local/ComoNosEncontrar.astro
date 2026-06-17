@@ -1,6 +1,10 @@
 ---
 import site from '../../data/siteConfig.json';
 const nap = (site as any).nap || {};
+interface Props {
+  areaExtra?: string[];
+}
+const { areaExtra } = Astro.props as Props;
 ---
 <section id="encontrar" class="section bg-soft">
   <div class="container-x grid gap-10 lg:grid-cols-2 items-center">
@@ -11,6 +15,9 @@ const nap = (site as any).nap || {};
         <li><span class="font-semibold text-ink">Endereço:</span> {site.address}</li>
         <li><span class="font-semibold text-ink">Telefone:</span> {site.phone}</li>
         <li><span class="font-semibold text-ink">Horário:</span> {site.hours}</li>
+        {areaExtra && areaExtra.length > 0 && (
+          <li><span class="font-semibold text-ink">Também atendemos:</span> {areaExtra.join(', ')}</li>
+        )}
       </ul>
       <a href={`https://wa.me/${site.whatsapp}`} class="btn-accent mt-6">Chamar no WhatsApp</a>
     </div>
