@@ -46,42 +46,45 @@ const servicosList = (await import('../../data/servicos.json')).default as any[]
   {/* 2. TÓPICOS */}
   {servico.topicos?.length > 0 && (
     <section class="section">
-      <div class="container-x max-w-3xl">
-        <span class="eyebrow">Guia completo</span>
-        <h2 class="text-3xl">{servico.nome} {prep} {local.nome}: o que você precisa saber</h2>
-        <div class="mt-8 space-y-8">
-          {servico.topicos.map((t: any) => {
-            const item = typeof t === 'string' ? { nivel: 'h2', titulo: t, conteudo: '' } : t;
-            const Heading: any = ['h2', 'h3', 'h4'].includes(item.nivel) ? item.nivel : 'h2';
-            const size = item.nivel === 'h3' ? 'text-xl' : item.nivel === 'h4' ? 'text-lg' : 'text-2xl';
-            return (
-              <div>
-                <Heading class={`${size} text-ink font-display font-semibold`}>{item.titulo}</Heading>
-                {item.conteudo && <div class="prose-clinic mt-2" set:html={marked.parse(item.conteudo)} />}
-              </div>
-            );
-          })}
+      <div class="container-x">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl">{servico.nome} {prep} {local.nome}: o que você precisa saber</h2>
+          <div class="mt-8 space-y-8">
+            {servico.topicos.map((t: any) => {
+              const item = typeof t === 'string' ? { nivel: 'h2', titulo: t, conteudo: '' } : t;
+              const Heading: any = ['h2', 'h3', 'h4'].includes(item.nivel) ? item.nivel : 'h2';
+              const size = item.nivel === 'h3' ? 'text-xl' : item.nivel === 'h4' ? 'text-lg' : 'text-2xl';
+              return (
+                <div>
+                  <Heading class={`${size} text-ink font-display font-semibold`}>{item.titulo}</Heading>
+                  {item.conteudo && <div class="prose-clinic mt-2" set:html={marked.parse(item.conteudo)} />}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
   )}
 
   {/* 3. NOSSOS SERVIÇOS */}
-  <Servicos eyebrow="Nossos serviços" title="Tratamentos disponíveis" items={servicosList.map((s) => ({ title: s.nome, text: s.resumo }))} cta={{ label: 'Agendar avaliação', href: '#contato' }} />
+  <Servicos eyebrow="Nossos serviços" title="Tratamentos disponíveis" items={servicosList.map((s) => ({ title: s.nome, text: s.resumo, href: `/${local.slug}/${s.slug}` }))} cta={{ label: 'Agendar avaliação', href: '#contato' }} />
 
   {/* 4. PERGUNTAS FREQUENTES */}
   {local.faq?.length > 0 && (
     <section class="section bg-soft">
-      <div class="container-x max-w-3xl">
-        <span class="eyebrow">Perguntas frequentes</span>
-        <h2 class="text-3xl">Dúvidas sobre {servico.nome.toLowerCase()} {prep} {local.nome}</h2>
-        <div class="mt-8 space-y-3">
-          {local.faq.map((f: any) => (
-            <details class="border-b border-border pb-3">
-              <summary class="font-medium text-ink cursor-pointer">{f.q}</summary>
-              <p class="mt-2 text-ink-muted">{f.a}</p>
-            </details>
-          ))}
+      <div class="container-x">
+        <div class="max-w-3xl">
+          <span class="eyebrow">Perguntas frequentes</span>
+          <h2 class="text-3xl">Dúvidas sobre {servico.nome.toLowerCase()} {prep} {local.nome}</h2>
+          <div class="mt-8 space-y-3">
+            {local.faq.map((f: any) => (
+              <details class="border-b border-border pb-3">
+                <summary class="font-medium text-ink cursor-pointer">{f.q}</summary>
+                <p class="mt-2 text-ink-muted">{f.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </section>

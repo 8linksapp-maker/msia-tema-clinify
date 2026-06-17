@@ -1,5 +1,5 @@
 ---
-interface ServiceItem { title: string; text: string; }
+interface ServiceItem { title: string; text: string; href?: string; }
 interface Props { eyebrow?: string; title: string; items?: ServiceItem[]; cta?: { label: string; href: string }; }
 const { eyebrow, title, items = [], cta } = Astro.props;
 ---
@@ -10,13 +10,17 @@ const { eyebrow, title, items = [], cta } = Astro.props;
       <h2 class="text-3xl md:text-4xl">{title}</h2>
     </div>
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {items.map((s) => (
-        <article class="card p-6 hover:border-secondary transition">
-          <span class="ic mb-4">+</span>
-          <h3 class="text-lg">{s.title}</h3>
-          <p class="mt-2 text-sm text-ink-muted">{s.text}</p>
-        </article>
-      ))}
+      {items.map((s) => {
+        const Tag: any = s.href ? 'a' : 'article';
+        return (
+          <Tag href={s.href} class="card p-6 hover:border-secondary transition block group">
+            <span class="ic mb-4">+</span>
+            <h3 class="text-lg group-hover:text-primary transition">{s.title}</h3>
+            <p class="mt-2 text-sm text-ink-muted">{s.text}</p>
+            {s.href && <span class="mt-3 inline-block text-sm font-medium text-accent">Ver página →</span>}
+          </Tag>
+        );
+      })}
     </div>
     {cta && <div class="mt-10"><a href={cta.href} class="btn-accent">{cta.label}</a></div>}
   </div>
