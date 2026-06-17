@@ -81,6 +81,26 @@ const servicosList = (await import('../data/servicos.json')).default as any[];
       </div>
     </section>
 
+    <!-- 3b. Tópicos do serviço (roteiro H2 — estrutura SEO) -->
+    {props.servico.topicos?.length > 0 && (
+      <section class="section">
+        <div class="container-x max-w-3xl">
+          <span class="eyebrow">Guia completo</span>
+          <h2 class="text-3xl">{props.servico.nome} {props.local.prep || 'em'} {props.local.nome}: o que você precisa saber</h2>
+          <div class="mt-8 space-y-10">
+            {props.servico.topicos.map((t: string) => (
+              <div>
+                <h2 class="text-2xl text-ink">{t}</h2>
+                <p class="mt-2 text-ink-muted">
+                  Tudo sobre {t.toLowerCase()} no atendimento de {props.servico.nome.toLowerCase()} {props.local.prep || 'em'} {props.local.nome}. {props.local.referenciaLocal}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
     <!-- 4. Como nos encontrar (mapa + NAP + schema acima) -->
     <ComoNosEncontrar />
 

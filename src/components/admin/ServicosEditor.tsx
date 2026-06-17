@@ -7,9 +7,10 @@ interface ServicoItem {
     slug: string;
     nome: string;
     resumo: string;
+    topicos: string[];
 }
 
-const EMPTY_SERVICO: ServicoItem = { slug: '', nome: '', resumo: '' };
+const EMPTY_SERVICO: ServicoItem = { slug: '', nome: '', resumo: '', topicos: [] };
 
 function toSlug(text: string): string {
     return text
@@ -33,7 +34,10 @@ export default function ServicosEditor() {
         githubApi('read', 'src/data/servicos.json')
             .then(data => {
                 const parsed = JSON.parse(data?.content || '[]');
-                setItems(Array.isArray(parsed) ? parsed : []);
+                const normalized = Array.isArray(parsed)
+                    ? parsed.map((it: any) => ({ ...it, topicos: Array.isArray(it.topicos) ? it.topicos : [] }))
+                    : [];
+                setItems(normalized);
                 setFileSha(data.sha);
             })
             .catch(err => {
@@ -65,7 +69,7 @@ export default function ServicosEditor() {
     };
 
     const addItem = () => {
-        setItems([...items, { ...EMPTY_SERVICO }]);
+        setItems([...items, { ...EMPTY_SERVICO, topicos: [] }]);
     };
 
     const removeItem = (idx: number) => {
@@ -93,6 +97,26 @@ export default function ServicosEditor() {
         setItems(items.map((it, i) => i === idx ? { ...it, slug: safe } : it));
     };
 
+    // Tópicos helpers
+    const addTopico = (idx: number) => {
+        setItems(items.map((it, i) => i === idx ? { ...it, topicos: [...it.topicos, ''] } : it));
+    };
+
+    const updateTopico = (servicoIdx: number, topicoIdx: number, value: string) => {
+        setItems(items.map((it, i) => {
+            if (i !== servicoIdx) return it;
+            const topicos = it.topicos.map((t, ti) => ti === topicoIdx ? value : t);
+            return { ...it, topicos };
+        }));
+    };
+
+    const removeTopico = (servicoIdx: number, topicoIdx: number) => {
+        setItems(items.map((it, i) => {
+            if (i !== servicoIdx) return it;
+            return { ...it, topicos: it.topicos.filter((_, ti) => ti !== topicoIdx) };
+        }));
+    };
+
     if (loading) return (
         <div className="flex flex-col items-center justify-center p-20 text-adm-ink-faint bg-adm-surface rounded-lg border border-adm-border">
             <Loader2 className="w-8 h-8 animate-spin mb-4 text-adm-primary" aria-hidden="true" />
@@ -102,6 +126,7 @@ export default function ServicosEditor() {
 
     const inputClass = "w-full bg-adm-elev border border-adm-border rounded-md px-4 py-3 text-sm text-adm-ink font-medium focus:outline-none focus:border-adm-primary focus:ring-2 focus:ring-adm-primary/20 transition-all";
     const labelClass = "block text-[10px] font-bold text-adm-ink-muted uppercase tracking-widest mb-1.5";
+    const subInputClass = "flex-1 bg-adm-elev border border-adm-border rounded-md px-3 py-2.5 text-sm text-adm-ink font-medium focus:outline-none focus:border-adm-primary focus:ring-2 focus:ring-adm-primary/20 transition-all";
 
     return (
         <form onSubmit={handleSave} className="space-y-6 pb-32 max-w-3xl">
@@ -197,6 +222,47 @@ export default function ServicosEditor() {
                                     className={`${inputClass} resize-y`}
                                     placeholder="Breve descrição do serviço que aparece nos cards do site..."
                                 />
+                            </div>
+
+                            {/* Tópicos abordados */}
+                            <div>
+                                <div className="flex items-center justify-between mb-2">
+                                    <label className={`${labelClass} mb-0`}>Tópicos abordados</label>
+                                    <button
+                                        type="button"
+                                        onClick={() => addTopico(idx)}
+                                        className="text-[11px] font-semibold text-adm-primary hover:text-adm-primary/80 flex items-center gap-1 px-2 py-1 rounded hover:bg-adm-primary-soft transition-colors"
+                                    >
+                                        <Plus className="w-3.5 h-3.5" aria-hidden="true" /> Adicionar tópico
+                                    </button>
+                                </div>
+                                <p className="text-[10px] text-adm-ink-faint mb-2">Viram os títulos (H2) do roteiro nas páginas de SEO local.</p>
+                                {item.topicos.length === 0 ? (
+                                    <p className="text-xs text-adm-ink-faint italic py-2">Nenhum tópico cadastrado.</p>
+                                ) : (
+                                    <div className="space-y-2">
+                                        {item.topicos.map((topico, tIdx) => (
+                                            <div key={tIdx} className="flex items-center gap-2">
+                                                <input
+                                                    type="text"
+                                                    value={topico}
+                                                    onChange={e => updateTopico(idx, tIdx, e.target.value)}
+                                                    className={subInputClass}
+                                                    placeholder="Ex: O que é o implante dentário"
+                                                    aria-label={`Tópico ${tIdx + 1}`}
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => removeTopico(idx, tIdx)}
+                                                    aria-label={`Remover tópico ${topico || tIdx + 1}`}
+                                                    className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-adm-ink-faint hover:text-red-600 hover:bg-red-50 rounded-lg transition-all shrink-0"
+                                                >
+                                                    <Trash2 className="w-4 h-4" aria-hidden="true" />
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

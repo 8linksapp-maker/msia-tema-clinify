@@ -4,6 +4,7 @@ export const servicoItemSchema = z.object({
   slug: z.string(),
   nome: z.string(),
   resumo: z.string(),
+  topicos: z.array(z.string()).default([]),
 });
 
 export const servicosSchema = z.array(servicoItemSchema);
