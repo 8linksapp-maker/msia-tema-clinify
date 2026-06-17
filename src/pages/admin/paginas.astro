@@ -1,0 +1,111 @@
+---
+export const prerender = false;
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import servicos from '../../data/servicos.json';
+import locais from '../../data/locais.json';
+import { getCollection } from 'astro:content';
+
+// Matriz serviço × localidade
+const matriz: { servico: string; localidade: string; url: string }[] = [];
+for (const s of servicos as any[]) {
+  for (const l of locais as any[]) {
+    matriz.push({ servico: s.nome, localidade: l.nome, url: `/${s.slug}-${l.prep || 'em'}-${l.slug}` });
+  }
+}
+
+// Páginas fixas
+const fixas = [
+  { label: 'Home', url: '/' },
+  { label: 'Serviços', url: '/servicos' },
+  { label: 'Equipe', url: '/equipe' },
+  { label: 'Sobre', url: '/sobre' },
+  { label: 'Contato', url: '/contato' },
+  { label: 'Agendar consulta', url: '/agendar' },
+  { label: 'Novidades (blog)', url: '/blog' },
+];
+
+// Blog
+let posts: { label: string; url: string }[] = [];
+try {
+  posts = (await getCollection('blog'))
+    .filter((p: any) => !p.data.draft)
+    .map((p: any) => ({ label: p.data.title, url: `/blog/${p.id}` }));
+} catch {}
+
+const total = matriz.length + fixas.length + posts.length;
+---
+<AdminLayout title="Páginas do site" activeSection="paginas">
+  <div class="flex items-end justify-between gap-4 mb-2">
+    <div>
+      <h1 class="text-2xl font-bold text-adm-ink">Páginas do site</h1>
+      <p class="text-adm-ink-muted text-sm">{total} páginas no total · {matriz.length} da matriz · {fixas.length} fixas · {posts.length} no blog</p>
+    </div>
+    <input id="busca" type="search" placeholder="Filtrar por serviço, localidade ou URL…" class="w-72 px-4 py-2 rounded-lg border border-adm-border bg-adm-surface text-adm-ink text-sm" />
+  </div>
+
+  <!-- Matriz -->
+  <h2 class="text-lg font-semibold text-adm-ink mt-8 mb-3">SEO Local — matriz serviço × localidade ({matriz.length})</h2>
+  <div class="bg-adm-surface border border-adm-border rounded-xl overflow-hidden">
+    <table class="w-full text-sm">
+      <thead class="bg-adm-bg text-adm-ink-muted">
+        <tr><th class="text-left px-4 py-2 font-semibold">Serviço</th><th class="text-left px-4 py-2 font-semibold">Localidade</th><th class="text-left px-4 py-2 font-semibold">URL</th><th class="px-4 py-2"></th></tr>
+      </thead>
+      <tbody>
+        {matriz.map((m) => (
+          <tr class="border-t border-adm-border js-row" data-search={`${m.servico} ${m.localidade} ${m.url}`.toLowerCase()}>
+            <td class="px-4 py-2 text-adm-ink">{m.servico}</td>
+            <td class="px-4 py-2 text-adm-ink-muted">{m.localidade}</td>
+            <td class="px-4 py-2"><code class="text-adm-primary">{m.url}</code></td>
+            <td class="px-4 py-2 text-right"><a href={m.url} target="_blank" rel="noopener" class="text-adm-primary underline">abrir ↗</a></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Fixas -->
+  <h2 class="text-lg font-semibold text-adm-ink mt-8 mb-3">Páginas fixas</h2>
+  <div class="bg-adm-surface border border-adm-border rounded-xl overflow-hidden">
+    <table class="w-full text-sm">
+      <tbody>
+        {fixas.map((f) => (
+          <tr class="border-t border-adm-border first:border-t-0 js-row" data-search={`${f.label} ${f.url}`.toLowerCase()}>
+            <td class="px-4 py-2 text-adm-ink">{f.label}</td>
+            <td class="px-4 py-2"><code class="text-adm-primary">{f.url}</code></td>
+            <td class="px-4 py-2 text-right"><a href={f.url} target="_blank" rel="noopener" class="text-adm-primary underline">abrir ↗</a></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Blog -->
+  <h2 class="text-lg font-semibold text-adm-ink mt-8 mb-3">Blog ({posts.length})</h2>
+  <div class="bg-adm-surface border border-adm-border rounded-xl overflow-hidden">
+    {posts.length === 0 ? (
+      <p class="px-4 py-3 text-adm-ink-muted text-sm">Nenhum post.</p>
+    ) : (
+      <table class="w-full text-sm">
+        <tbody>
+          {posts.map((p) => (
+            <tr class="border-t border-adm-border first:border-t-0 js-row" data-search={`${p.label} ${p.url}`.toLowerCase()}>
+              <td class="px-4 py-2 text-adm-ink">{p.label}</td>
+              <td class="px-4 py-2"><code class="text-adm-primary">{p.url}</code></td>
+              <td class="px-4 py-2 text-right"><a href={p.url} target="_blank" rel="noopener" class="text-adm-primary underline">abrir ↗</a></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
+
+  <script is:inline>
+    const inp = document.getElementById('busca');
+    inp && inp.addEventListener('input', () => {
+      const q = inp.value.trim().toLowerCase();
+      document.querySelectorAll('.js-row').forEach((r) => {
+        r.style.display = !q || (r.getAttribute('data-search') || '').includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</AdminLayout>
