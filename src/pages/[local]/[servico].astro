@@ -94,7 +94,7 @@ const servicosList = (await import('../../data/servicos.json')).default as any[]
   <ComoNosEncontrar areaExtra={local.bairrosVizinhos} />
 
   {/* 6. NOTÍCIAS */}
-  <Novidades eyebrow="Notícias" title="Conteúdo para o seu sorriso" />
+  <Novidades eyebrow="Notícias" title="Conteúdo e novidades" />
 
   {/* 7. FALE COM A GENTE */}
   <CtaContato eyebrow="Fale com a gente" title={`Agende ${servico.nome.toLowerCase()} ${prep} ${local.nome}`} services={servicosList.map((s) => s.nome)} origem={`${servico.slug}|${local.slug}`} />

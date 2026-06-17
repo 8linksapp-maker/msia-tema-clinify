@@ -3,9 +3,10 @@ import site from '../../data/siteConfig.json';
 interface Props { areaServed?: string[]; }
 const { areaServed = [] } = Astro.props;
 const nap = (site as any).nap || {};
+const tipo = (site as any).schemaType || 'MedicalBusiness';
 const schema = {
   '@context': 'https://schema.org',
-  '@type': 'Dentist',
+  '@type': tipo,
   name: site.name,
   telephone: site.phone,
   email: site.email,

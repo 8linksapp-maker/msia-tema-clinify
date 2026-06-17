@@ -5,6 +5,8 @@ import { githubApi } from '../../lib/adminApi';
 
 interface SiteConfig {
     name: string;
+    segmento: string;
+    schemaType: string;
     description: string;
     phone: string;
     whatsapp: string;
@@ -18,8 +20,20 @@ interface SiteConfig {
     };
 }
 
+const SCHEMA_TYPES: { value: string; label: string }[] = [
+    { value: 'MedicalBusiness', label: 'Genérico (saúde)' },
+    { value: 'Dentist', label: 'Odontologia' },
+    { value: 'Physician', label: 'Médico / Clínica' },
+    { value: 'Optician', label: 'Ótica / Oftalmo' },
+    { value: 'Pharmacy', label: 'Farmácia' },
+    { value: 'VeterinaryCare', label: 'Veterinária' },
+    { value: 'Hospital', label: 'Hospital' },
+];
+
 const DEFAULT: SiteConfig = {
     name: '',
+    segmento: '',
+    schemaType: 'MedicalBusiness',
     description: '',
     phone: '',
     whatsapp: '',
@@ -121,6 +135,24 @@ export default function SiteConfigEditor() {
                     <div>
                         <label className={labelClass}>Descrição / Tagline</label>
                         <textarea rows={2} value={data.description} onChange={e => set('description', e.target.value)} className={`${inputClass} resize-y`} />
+                    </div>
+                </div>
+            </div>
+
+            {/* Segmento */}
+            <div className={cardClass}>
+                <h3 className="text-base font-bold text-adm-ink mb-5 border-b border-adm-border pb-3">Segmento / Tipo de negócio</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label className={labelClass}>Segmento</label>
+                        <input type="text" value={data.segmento || ''} onChange={e => set('segmento', e.target.value)} placeholder="Ex: Odontologia, Dermatologia, Fisioterapia" className={inputClass} />
+                    </div>
+                    <div>
+                        <label className={labelClass}>Tipo (schema.org)</label>
+                        <select value={data.schemaType || 'MedicalBusiness'} onChange={e => set('schemaType', e.target.value)} className={inputClass}>
+                            {SCHEMA_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
+                        </select>
+                        <p className="text-[11px] text-adm-ink-faint mt-1 ml-1">Define o <code>@type</code> dos dados estruturados (SEO).</p>
                     </div>
                 </div>
             </div>

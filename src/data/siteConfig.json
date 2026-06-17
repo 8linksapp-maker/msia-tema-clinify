@@ -1,5 +1,7 @@
 {
   "name": "Clínica Sorriso",
+  "segmento": "Odontologia",
+  "schemaType": "Dentist",
   "postUrlPrefix": "",
   "description": "Odontologia de excelência com cuidado gentil. Agende sua avaliação.",
   "phone": "(11) 4002-8922",

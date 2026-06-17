@@ -274,7 +274,7 @@ export default function LocaisEditor() {
                                     <div>
                                         <label className={labelClass} htmlFor={`slug-${idx}`}>Slug (URL)</label>
                                         <div className="flex items-stretch bg-adm-elev border border-adm-border rounded-md overflow-hidden focus-within:ring-2 focus-within:ring-adm-primary/20 focus-within:border-adm-primary">
-                                            <span className="px-3 flex items-center font-mono text-xs text-adm-ink-faint bg-adm-elev border-r border-adm-border whitespace-nowrap">/dentista/</span>
+                                            <span className="px-3 flex items-center font-mono text-xs text-adm-ink-faint bg-adm-elev border-r border-adm-border whitespace-nowrap">/</span>
                                             <input
                                                 id={`slug-${idx}`}
                                                 type="text"
@@ -285,7 +285,7 @@ export default function LocaisEditor() {
                                             />
                                         </div>
                                         <p className="text-[10px] text-adm-ink-faint mt-1.5">
-                                            URL final: <code className="bg-adm-elev px-1 rounded">/dentista/{item.slug || '...'}</code>
+                                            URL das páginas: <code className="bg-adm-elev px-1 rounded">/{item.slug || '...'}/&lt;serviço&gt;</code>
                                         </p>
                                     </div>
 

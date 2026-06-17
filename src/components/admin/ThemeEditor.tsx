@@ -2,11 +2,15 @@ import { useEffect, useState } from 'react';
 import { githubApi } from '../../lib/adminApi';
 import { triggerToast } from './CmsToaster';
 
-// Especialidades = presets em src/data/themes/<slug>.json
-const PRESETS = [
-  { slug: 'dental', label: 'Odontologia (azul/âmbar)' },
-  { slug: 'harmonizacao', label: 'Harmonização (nude/rosé)' },
-];
+// Especialidades = presets em src/data/themes/<slug>.json (data-driven via import.meta.glob)
+const themeModules: Record<string, any> = import.meta.glob('../../data/themes/*.json', { eager: true });
+const PRESETS = Object.entries(themeModules)
+  .map(([path, mod]) => {
+    const slug = path.split('/').pop()!.replace('.json', '');
+    const data = (mod as any).default ?? mod;
+    return { slug, label: data?.name || slug };
+  })
+  .sort((a, b) => a.label.localeCompare(b.label));
 
 const TOKEN_LABELS: Record<string, string> = {
   primary: 'Cor principal (marca)',
