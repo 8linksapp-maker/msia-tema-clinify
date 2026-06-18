@@ -10,6 +10,7 @@
     "secondary": "#B98E86",
     "accent": "#C9A24B",
     "accent-ink": "#2A1F1D",
+    "accent-strong": "#7A5A12",
     "border": "#ECE0DB"
   },
   "fonts": { "display": "'Poppins', sans-serif", "body": "'Poppins', sans-serif" }

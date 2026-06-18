@@ -15,6 +15,7 @@ export default {
         secondary: 'var(--c-secondary)',
         accent: 'var(--c-accent)',
         'accent-ink': 'var(--c-accent-ink)',
+        'accent-strong': 'var(--c-accent-strong)',
         border: 'var(--c-border)',
 
         // --- Admin (CMS do scaffold) — paleta Café-da-Tarde, namespaced adm-* ---

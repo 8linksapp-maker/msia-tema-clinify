@@ -20,7 +20,7 @@ const { eyebrow, title, lead, cta, rating, doctor, contact } = Astro.props;
         {cta && <a href={cta.href} class="btn-accent">{cta.label}</a>}
         {rating && (
           <div class="text-sm">
-            <span class="text-accent font-semibold">★ {rating.score}</span>
+            <span class="text-accent-strong font-semibold">★ {rating.score}</span>
             <span class="text-ink-muted"> · {rating.count}</span>
           </div>
         )}

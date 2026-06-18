@@ -28,7 +28,7 @@ const cards = fromCollection.length > 0 ? fromCollection : items;
         {eyebrow && <span class="eyebrow">{eyebrow}</span>}
         <h2 class="text-3xl md:text-4xl">{title}</h2>
       </div>
-      <a href="/blog" class="text-sm font-medium text-accent">Ver todas →</a>
+      <a href="/blog" class="text-sm font-medium text-accent-strong">Ver todas →</a>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
       {cards.map((p) => (
@@ -39,7 +39,7 @@ const cards = fromCollection.length > 0 ? fromCollection : items;
           <div class="p-6">
             <h3 class="text-lg group-hover:text-primary transition">{p.title}</h3>
             <p class="mt-2 text-sm text-ink-muted">{p.excerpt}</p>
-            <span class="mt-4 inline-block text-sm font-medium text-accent">Ler mais →</span>
+            <span class="mt-4 inline-block text-sm font-medium text-accent-strong">Ler mais →</span>
           </div>
         </a>
       ))}

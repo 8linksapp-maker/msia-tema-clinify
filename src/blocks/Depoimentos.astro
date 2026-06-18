@@ -12,7 +12,7 @@ const { eyebrow, title, rating, items = [] } = Astro.props;
       </div>
       {rating && (
         <div class="text-right">
-          <p class="font-display text-3xl font-bold text-accent">★ {rating.score}</p>
+          <p class="font-display text-3xl font-bold text-accent-strong">★ {rating.score}</p>
           <p class="text-sm text-ink-muted">{rating.label}</p>
         </div>
       )}

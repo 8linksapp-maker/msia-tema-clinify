@@ -18,15 +18,15 @@ const { eyebrow, title, services = [], origem } = Astro.props;
     <form action="/api/subscribe" method="POST" class="card p-6 grid gap-4">
       {origem && <input type="hidden" name="origem" value={origem} />}
       <div class="grid sm:grid-cols-2 gap-4">
-        <input name="nome" required placeholder="Seu nome" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
-        <input name="telefone" required placeholder="Telefone / WhatsApp" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
+        <input name="nome" required placeholder="Seu nome" aria-label="Seu nome" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
+        <input name="telefone" required placeholder="Telefone / WhatsApp" aria-label="Telefone ou WhatsApp" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
       </div>
-      <input name="email" type="email" placeholder="E-mail" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
-      <select name="servico" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px] text-ink-muted">
+      <input name="email" type="email" placeholder="E-mail" aria-label="E-mail" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px]" />
+      <select name="servico" aria-label="Serviço de interesse" class="rounded-xl border border-border bg-surface px-4 py-3 min-h-[44px] text-ink-muted">
         <option value="">Serviço de interesse</option>
         {services.map((s) => <option value={s}>{s}</option>)}
       </select>
-      <textarea name="mensagem" rows="3" placeholder="Mensagem (opcional)" class="rounded-xl border border-border bg-surface px-4 py-3"></textarea>
+      <textarea name="mensagem" rows="3" placeholder="Mensagem (opcional)" aria-label="Mensagem (opcional)" class="rounded-xl border border-border bg-surface px-4 py-3"></textarea>
       <button type="submit" class="btn-accent w-full">Agendar avaliação</button>
     </form>
   </div>

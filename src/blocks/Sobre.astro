@@ -25,7 +25,7 @@ const { image, badge, eyebrow, title, lead, benefits = [], cta } = Astro.props;
       <ul class="mt-6 grid sm:grid-cols-2 gap-3">
         {benefits.map((b) => (
           <li class="flex items-start gap-3">
-            <span class="text-accent mt-0.5">✓</span>
+            <span class="text-accent-strong mt-0.5">✓</span>
             <span class="text-ink-muted">{b}</span>
           </li>
         ))}
