@@ -1,7 +1,11 @@
 ---
+import servicosData from '../data/servicos.json';
 interface ServiceItem { title: string; text: string; href?: string; }
-interface Props { eyebrow?: string; title: string; items?: ServiceItem[]; cta?: { label: string; href: string }; }
-const { eyebrow, title, items = [], cta } = Astro.props;
+interface Props { eyebrow?: string; title: string; items?: ServiceItem[]; cta?: { label: string; href: string }; fromData?: boolean; }
+const { eyebrow, title, items = [], cta, fromData = false } = Astro.props;
+const list: ServiceItem[] = fromData
+  ? (servicosData as any[]).map((s) => ({ title: s.nome, text: s.resumo, href: `/servicos/${s.slug}` }))
+  : items;
 ---
 <section id="servicos" class="section bg-soft">
   <div class="container-x">
@@ -10,7 +14,7 @@ const { eyebrow, title, items = [], cta } = Astro.props;
       <h2 class="text-3xl md:text-4xl">{title}</h2>
     </div>
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {items.map((s) => {
+      {list.map((s) => {
         const Tag: any = s.href ? 'a' : 'article';
         return (
           <Tag href={s.href} class="card p-6 hover:border-secondary transition block group">

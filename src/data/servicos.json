@@ -1,65 +1,290 @@
 [
-  { "slug": "implante-dentario", "nome": "Implante dentário", "resumo": "Reposição de dentes com naturalidade e firmeza.", "topicos": [
-    { "nivel": "h2", "titulo": "O que é o implante dentário", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Quando o implante é indicado", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Como é feito o procedimento", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Recuperação e cuidados", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Quanto custa um implante", "conteudo": "" }
-  ] },
-  { "slug": "clareamento-dental", "nome": "Clareamento dental", "resumo": "Sorriso mais branco com segurança e acompanhamento.", "topicos": [
-    { "nivel": "h2", "titulo": "Tipos de clareamento", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Clareamento a laser x caseiro", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Quanto tempo dura o resultado", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Cuidados após o clareamento", "conteudo": "" },
-    { "nivel": "h2", "titulo": "É seguro para os dentes?", "conteudo": "" }
-  ] },
-  { "slug": "ortodontia", "nome": "Ortodontia (aparelho)", "resumo": "Alinhamento dos dentes com aparelho fixo ou alinhadores.", "topicos": [
-    { "nivel": "h2", "titulo": "Aparelho fixo x alinhadores", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Quando usar aparelho", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Tempo de tratamento", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Manutenção e ajustes", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Cuidados com a higiene", "conteudo": "" }
-  ] },
-  { "slug": "lentes-de-contato-dental", "nome": "Lentes de contato dental", "resumo": "Facetas finas para um sorriso harmônico.", "topicos": [
-    { "nivel": "h2", "titulo": "O que são lentes de contato dental", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Lentes x facetas", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Como é a aplicação", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Durabilidade e manutenção", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Indicações e contraindicações", "conteudo": "" }
-  ] },
-  { "slug": "tratamento-de-canal", "nome": "Tratamento de canal", "resumo": "Endodontia para salvar o dente com conforto.", "topicos": [
-    { "nivel": "h2", "titulo": "O que é tratamento de canal", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Quando o canal é necessário", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Como é o procedimento", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Dói fazer canal?", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Recuperação", "conteudo": "" }
-  ] },
-  { "slug": "limpeza-e-prevencao", "nome": "Limpeza e prevenção", "resumo": "Profilaxia e cuidado de rotina para a saúde bucal.", "topicos": [
-    { "nivel": "h2", "titulo": "O que inclui a limpeza profissional", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Com que frequência fazer", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Prevenção de cáries e gengivite", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Profilaxia x raspagem", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Cuidados em casa", "conteudo": "" }
-  ] },
-  { "slug": "protese-dentaria", "nome": "Prótese dentária", "resumo": "Reabilitação oral fixa ou removível.", "topicos": [
-    { "nivel": "h2", "titulo": "Tipos de prótese", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Prótese fixa x removível", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Como é a adaptação", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Manutenção e durabilidade", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Quando a prótese é indicada", "conteudo": "" }
-  ] },
-  { "slug": "odontopediatria", "nome": "Odontopediatria", "resumo": "Cuidado odontológico gentil para crianças.", "topicos": [
-    { "nivel": "h2", "titulo": "Primeira consulta da criança", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Prevenção de cáries infantis", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Tratamentos mais comuns", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Como lidar com o medo do dentista", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Cuidados em casa", "conteudo": "" }
-  ] },
-  { "slug": "urgencia-odontologica", "nome": "Urgência odontológica", "resumo": "Atendimento rápido para dor e emergências.", "topicos": [
-    { "nivel": "h2", "titulo": "Quando procurar urgência", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Dor de dente: o que fazer", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Trauma e dente quebrado", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Atendimento no mesmo dia", "conteudo": "" },
-    { "nivel": "h2", "titulo": "Como evitar emergências", "conteudo": "" }
-  ] }
+  {
+    "slug": "implante-dentario",
+    "nome": "Implante dentário",
+    "resumo": "Reposição de dentes com naturalidade e firmeza.",
+    "topicos": [
+      {
+        "nivel": "h2",
+        "titulo": "O que é o implante dentário",
+        "conteudo": "O implante dentário é um pino de titânio instalado no osso da mandíbula ou da maxila para substituir a raiz de um dente perdido.\n\nSobre ele é fixada uma coroa de porcelana, devolvendo a aparência e a função de um dente natural — sem desgastar os dentes vizinhos."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Quando o implante é indicado",
+        "conteudo": "É indicado para quem perdeu um ou mais dentes por cárie, fratura ou doença na gengiva.\n\nTambém é uma alternativa fixa e confortável para quem usa prótese removível e quer mais estabilidade para mastigar e falar."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Como é feito o procedimento",
+        "conteudo": "O tratamento começa com uma avaliação clínica e exames de imagem para planejar cada detalhe. O implante é instalado com anestesia local e, após integrar ao osso, recebe a coroa definitiva.\n\n- Avaliação e planejamento\n- Instalação do implante\n- Cicatrização (osseointegração)\n- Colocação da coroa"
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Recuperação e cuidados",
+        "conteudo": "O pós-operatório costuma ser tranquilo, com inchaço leve nos primeiros dias.\n\nManter a higiene em dia e comparecer às consultas de acompanhamento é o que garante a durabilidade do implante a longo prazo."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Quanto custa um implante",
+        "conteudo": "O valor varia conforme o número de implantes, o tipo de coroa e a necessidade de procedimentos complementares.\n\nNa avaliação apresentamos um orçamento transparente e opções de parcelamento que cabem no seu planejamento."
+      }
+    ]
+  },
+  {
+    "slug": "clareamento-dental",
+    "nome": "Clareamento dental",
+    "resumo": "Sorriso mais branco com segurança e acompanhamento.",
+    "topicos": [
+      {
+        "nivel": "h2",
+        "titulo": "Tipos de clareamento",
+        "conteudo": "Existem dois caminhos principais: o clareamento de consultório, feito pelo dentista, e o caseiro, com moldeira e gel sob orientação profissional.\n\nEm muitos casos, os dois são combinados para um resultado mais rápido e uniforme."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Clareamento a laser x caseiro",
+        "conteudo": "O clareamento de consultório usa um gel mais concentrado e mostra resultado em poucas sessões.\n\nJá o caseiro é mais gradual e prático, feito por você em casa. A melhor opção depende da sua rotina e do tom desejado."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Quanto tempo dura o resultado",
+        "conteudo": "O efeito costuma durar de 1 a 3 anos, dependendo dos seus hábitos.\n\nCafé, vinho, refrigerante e cigarro aceleram o escurecimento — retoques periódicos ajudam a manter o brilho."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Cuidados após o clareamento",
+        "conteudo": "Nos primeiros dias, evite alimentos e bebidas com corante forte (a chamada \"dieta branca\").\n\n- Reduza café, vinho e refrigerante\n- Evite cigarro\n- Mantenha a escovação em dia"
+      },
+      {
+        "nivel": "h2",
+        "titulo": "É seguro para os dentes?",
+        "conteudo": "Sim. Quando feito com acompanhamento profissional, o clareamento é seguro e não enfraquece o esmalte.\n\nUma sensibilidade leve e temporária pode aparecer e é facilmente controlada."
+      }
+    ]
+  },
+  {
+    "slug": "ortodontia",
+    "nome": "Ortodontia (aparelho)",
+    "resumo": "Alinhamento dos dentes com aparelho fixo ou alinhadores.",
+    "topicos": [
+      {
+        "nivel": "h2",
+        "titulo": "Aparelho fixo x alinhadores",
+        "conteudo": "O aparelho fixo usa bráquetes colados aos dentes e é eficaz para os mais variados casos.\n\nJá os alinhadores transparentes são removíveis e quase invisíveis, ideais para quem busca discrição no dia a dia."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Quando usar aparelho",
+        "conteudo": "O aparelho é indicado para corrigir dentes tortos, apinhados ou com espaços, além de problemas de mordida.\n\nAlém da estética, ele melhora a mastigação e facilita a higiene, prevenindo problemas futuros."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Tempo de tratamento",
+        "conteudo": "A duração varia conforme a complexidade do caso, geralmente entre 12 e 24 meses.\n\nO acompanhamento regular é o que mantém o tratamento dentro do prazo previsto."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Manutenção e ajustes",
+        "conteudo": "As consultas de ajuste acontecem a cada 30 a 45 dias, para acompanhar o movimento dos dentes.\n\nNos alinhadores, as trocas de placa seguem um cronograma definido no planejamento."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Cuidados com a higiene",
+        "conteudo": "Com aparelho, a higiene exige um cuidado extra para evitar manchas e cáries.\n\n- Escove após as refeições\n- Use escova interdental\n- Não esqueça o fio dental"
+      }
+    ]
+  },
+  {
+    "slug": "lentes-de-contato-dental",
+    "nome": "Lentes de contato dental",
+    "resumo": "Facetas finas para um sorriso harmônico.",
+    "topicos": [
+      {
+        "nivel": "h2",
+        "titulo": "O que são lentes de contato dental",
+        "conteudo": "São lâminas finíssimas de porcelana coladas à frente dos dentes para transformar o sorriso.\n\nCorrigem cor, formato e pequenos espaços, com um resultado natural e duradouro."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Lentes x facetas",
+        "conteudo": "As lentes são mais finas e exigem pouco ou nenhum desgaste do dente.\n\nAs facetas são um pouco mais espessas, indicadas quando há necessidade de maior correção. O dentista define a melhor opção para o seu caso."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Como é a aplicação",
+        "conteudo": "O processo começa com um planejamento do sorriso, muitas vezes com uma prévia do resultado.\n\n- Planejamento e moldagem\n- Confecção das lentes\n- Cimentação definitiva"
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Durabilidade e manutenção",
+        "conteudo": "Com os cuidados certos, as lentes podem durar mais de 10 anos.\n\nManter a higiene e evitar morder objetos duros, como gelo e canetas, preserva o resultado por muito mais tempo."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Indicações e contraindicações",
+        "conteudo": "São indicadas para quem quer melhorar a estética do sorriso de forma conservadora.\n\nEm casos de bruxismo ou gengiva inflamada, pode ser necessário tratar essas condições antes."
+      }
+    ]
+  },
+  {
+    "slug": "tratamento-de-canal",
+    "nome": "Tratamento de canal",
+    "resumo": "Endodontia para salvar o dente com conforto.",
+    "topicos": [
+      {
+        "nivel": "h2",
+        "titulo": "O que é tratamento de canal",
+        "conteudo": "O tratamento de canal, ou endodontia, remove a polpa do dente que está inflamada ou infeccionada.\n\nÉ o que permite salvar um dente que, de outra forma, precisaria ser extraído."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Quando o canal é necessário",
+        "conteudo": "É indicado quando há dor intensa, sensibilidade prolongada ao quente e ao frio ou infecção na raiz.\n\nCáries profundas e traumas no dente são as causas mais comuns."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Como é o procedimento",
+        "conteudo": "Com anestesia local, o dente é limpo por dentro, os canais são desinfetados e selados.\n\nEm seguida, o dente é restaurado para voltar a funcionar normalmente."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Dói fazer canal?",
+        "conteudo": "Ao contrário da fama, o tratamento é feito com anestesia e costuma aliviar a dor que levou o paciente até a clínica.\n\nUm desconforto leve nos dias seguintes é normal e controlado com medicação."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Recuperação",
+        "conteudo": "A recuperação é rápida e a maioria das pessoas volta à rotina no mesmo dia.\n\nEvitar mastigar do lado tratado até a restauração final ajuda na cicatrização."
+      }
+    ]
+  },
+  {
+    "slug": "limpeza-e-prevencao",
+    "nome": "Limpeza e prevenção",
+    "resumo": "Profilaxia e cuidado de rotina para a saúde bucal.",
+    "topicos": [
+      {
+        "nivel": "h2",
+        "titulo": "O que inclui a limpeza profissional",
+        "conteudo": "A limpeza profissional remove a placa e o tártaro que a escovação não alcança.\n\nInclui também o polimento e a aplicação de flúor, deixando os dentes mais lisos e protegidos."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Com que frequência fazer",
+        "conteudo": "O recomendado é a cada 6 meses, mas alguns casos pedem intervalos menores.\n\nNa avaliação definimos a frequência ideal para a sua saúde bucal."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Prevenção de cáries e gengivite",
+        "conteudo": "A consulta de rotina identifica problemas no início, quando o tratamento é simples.\n\nPrevenir é sempre mais barato e confortável do que tratar."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Profilaxia x raspagem",
+        "conteudo": "A profilaxia é a limpeza de rotina, com caráter preventivo.\n\nJá a raspagem é indicada quando há tártaro abaixo da gengiva, em casos de doença periodontal."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Cuidados em casa",
+        "conteudo": "A rotina em casa é o que sustenta o resultado da limpeza.\n\n- Escove 3x ao dia\n- Use fio dental diariamente\n- Troque a escova a cada 3 meses"
+      }
+    ]
+  },
+  {
+    "slug": "protese-dentaria",
+    "nome": "Prótese dentária",
+    "resumo": "Reabilitação oral fixa ou removível.",
+    "topicos": [
+      {
+        "nivel": "h2",
+        "titulo": "Tipos de prótese",
+        "conteudo": "As próteses repõem dentes perdidos e podem ser fixas ou removíveis.\n\nA escolha depende de quantos dentes faltam, da saúde da gengiva e do osso disponível."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Prótese fixa x removível",
+        "conteudo": "A prótese fixa fica presa a implantes ou dentes, oferecendo mais estabilidade.\n\nA removível pode ser retirada para a higienização e costuma ter um custo mais acessível."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Como é a adaptação",
+        "conteudo": "Nos primeiros dias é normal um período de adaptação para falar e mastigar.\n\nPequenos ajustes nas primeiras consultas garantem o conforto no dia a dia."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Manutenção e durabilidade",
+        "conteudo": "Com higiene e revisões periódicas, as próteses duram muitos anos.\n\nA limpeza diária e o acompanhamento profissional evitam o desgaste precoce."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Quando a prótese é indicada",
+        "conteudo": "É indicada para quem perdeu dentes e quer recuperar a mastigação, a fala e a estética.\n\nDevolve a confiança no sorriso e a qualidade de vida."
+      }
+    ]
+  },
+  {
+    "slug": "odontopediatria",
+    "nome": "Odontopediatria",
+    "resumo": "Cuidado odontológico gentil para crianças.",
+    "topicos": [
+      {
+        "nivel": "h2",
+        "titulo": "Primeira consulta da criança",
+        "conteudo": "A primeira visita é recomendada por volta de 1 ano de idade ou com o nascimento dos primeiros dentes.\n\nÉ um momento leve, para a criança se familiarizar com o ambiente da clínica."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Prevenção de cáries infantis",
+        "conteudo": "A prevenção combina higiene, alimentação equilibrada e aplicação de flúor.\n\nOrientamos os pais sobre a escovação correta em cada fase do crescimento."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Tratamentos mais comuns",
+        "conteudo": "Os mais frequentes são limpeza, aplicação de flúor, selantes e restaurações.\n\nTodos feitos com uma abordagem gentil e adaptada à idade da criança."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Como lidar com o medo do dentista",
+        "conteudo": "Usamos uma linguagem acolhedora e um ritmo respeitoso para a criança se sentir segura.\n\nUma boa primeira experiência constrói uma relação tranquila com o dentista para a vida toda."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Cuidados em casa",
+        "conteudo": "Os hábitos aprendidos em casa fazem toda a diferença.\n\n- Escovação supervisionada\n- Reduzir o consumo de doces\n- Visitas regulares à clínica"
+      }
+    ]
+  },
+  {
+    "slug": "urgencia-odontologica",
+    "nome": "Urgência odontológica",
+    "resumo": "Atendimento rápido para dor e emergências.",
+    "topicos": [
+      {
+        "nivel": "h2",
+        "titulo": "Quando procurar urgência",
+        "conteudo": "Procure atendimento de urgência em casos de dor intensa, inchaço, sangramento ou trauma.\n\nQuanto antes, maiores as chances de resolver o problema com tranquilidade."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Dor de dente: o que fazer",
+        "conteudo": "Enxágue a boca com água morna e use um analgésico conforme orientação.\n\nEvite calor no local e procure a clínica o quanto antes — a dor é um sinal que não deve ser ignorado."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Trauma e dente quebrado",
+        "conteudo": "Em caso de fratura, guarde o pedaço do dente, se possível.\n\nSe um dente sair inteiro, mantenha-o em leite ou soro fisiológico e venha imediatamente: ele pode ser reimplantado."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Atendimento no mesmo dia",
+        "conteudo": "Reservamos horários para urgências para que você não precise esperar com dor.\n\nEntre em contato e encaixamos o seu atendimento o mais rápido possível."
+      },
+      {
+        "nivel": "h2",
+        "titulo": "Como evitar emergências",
+        "conteudo": "Boa parte das urgências pode ser evitada com prevenção.\n\n- Revisões a cada 6 meses\n- Não adie tratamentos\n- Use protetor bucal em esportes de impacto"
+      }
+    ]
+  }
 ]

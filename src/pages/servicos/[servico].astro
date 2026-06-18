@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocalBusinessSchema from '../../components/local/LocalBusinessSchema.astro';
+import ComoNosEncontrar from '../../components/local/ComoNosEncontrar.astro';
+import Servicos from '../../blocks/Servicos.astro';
+import Novidades from '../../blocks/Novidades.astro';
+import CtaContato from '../../blocks/CtaContato.astro';
+import site from '../../data/siteConfig.json';
+import { marked } from 'marked';
+
+export async function getStaticPaths() {
+  const servicos = (await import('../../data/servicos.json')).default as any[];
+  return servicos.map((s) => ({ params: { servico: s.slug }, props: { servico: s } }));
+}
+
+const { servico } = Astro.props as any;
+const servicosList = (await import('../../data/servicos.json')).default as any[];
+const locais = (await import('../../data/locais.json')).default as any[];
+const outros = servicosList.filter((s) => s.slug !== servico.slug);
+---
+<BaseLayout
+  title={`${servico.nome} — ${site.name}`}
+  description={`${servico.nome}: ${servico.resumo}`}
+>
+  <LocalBusinessSchema areaServed={locais.map((l) => l.nome)} />
+
+  {/* 1. HERO */}
+  <section class="bg-soft">
+    <div class="container-x section">
+      <span class="eyebrow">{servico.nome}</span>
+      <h1 class="text-4xl md:text-5xl max-w-3xl">{servico.nome}</h1>
+      <p class="mt-4 text-lg max-w-2xl">{servico.resumo}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Olá! Quero saber sobre ${servico.nome}.`)}`} class="btn-accent">Falar no WhatsApp</a>
+        <a href={`tel:${site.phone}`} class="btn-ghost">Ligar agora</a>
+      </div>
+    </div>
+  </section>
+
+  {/* 2. TÓPICOS */}
+  {servico.topicos?.length > 0 && (
+    <section class="section">
+      <div class="container-x">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl">{servico.nome}: o que você precisa saber</h2>
+          <div class="mt-8 space-y-8">
+            {servico.topicos.map((t: any) => {
+              const item = typeof t === 'string' ? { nivel: 'h2', titulo: t, conteudo: '' } : t;
+              const Heading: any = ['h2', 'h3', 'h4'].includes(item.nivel) ? item.nivel : 'h2';
+              const size = item.nivel === 'h3' ? 'text-xl' : item.nivel === 'h4' ? 'text-lg' : 'text-2xl';
+              return (
+                <div>
+                  <Heading class={`${size} text-ink font-display font-semibold`}>{item.titulo}</Heading>
+                  {item.conteudo && <div class="prose-clinic mt-2" set:html={marked.parse(item.conteudo)} />}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* 3. ATENDIMENTO POR REGIÃO (interlink pra matriz) */}
+  {locais.length > 0 && (
+    <section class="section bg-soft">
+      <div class="container-x">
+        <div class="max-w-3xl">
+          <span class="eyebrow">Onde atendemos</span>
+          <h2 class="text-3xl">{servico.nome} perto de você</h2>
+          <div class="mt-6 flex flex-wrap gap-3">
+            {locais.map((l) => (
+              <a href={`/${l.slug}/${servico.slug}`} class="btn-ghost">{servico.nome} {l.prep || 'em'} {l.nome}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* 4. OUTROS SERVIÇOS */}
+  <Servicos eyebrow="Nossos serviços" title="Outros tratamentos" items={outros.map((s) => ({ title: s.nome, text: s.resumo, href: `/servicos/${s.slug}` }))} cta={{ label: 'Agendar avaliação', href: '#contato' }} />
+
+  {/* 5. COMO NOS ENCONTRAR */}
+  <ComoNosEncontrar />
+
+  {/* 6. NOTÍCIAS */}
+  <Novidades eyebrow="Notícias" title="Conteúdo e novidades" />
+
+  {/* 7. FALE COM A GENTE */}
+  <CtaContato eyebrow="Fale com a gente" title={`Agende ${servico.nome.toLowerCase()}`} services={servicosList.map((s) => s.nome)} origem={servico.slug} />
+
+  {/* 8. RODAPÉ: via BaseLayout */}
+</BaseLayout>

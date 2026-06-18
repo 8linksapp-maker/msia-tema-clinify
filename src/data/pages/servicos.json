@@ -11,12 +11,7 @@
       "breadcrumb": [ { "label": "Início", "href": "/" }, { "label": "Serviços", "href": "/servicos" } ]
     }},
     { "type": "servicos", "props": {
-      "items": [
-        { "title": "Clínico geral", "text": "Prevenção, limpeza e cuidado de rotina." },
-        { "title": "Implantes", "text": "Reposição de dentes com naturalidade." },
-        { "title": "Estética dental", "text": "Lentes, facetas e harmonização do sorriso." },
-        { "title": "Clareamento", "text": "Sorriso mais branco com segurança." }
-      ],
+      "fromData": true,
       "cta": { "label": "Agendar avaliação", "href": "/agendar" }
     }},
     { "type": "porqueEscolher", "props": {

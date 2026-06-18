@@ -14,7 +14,7 @@ const { image, badge, eyebrow, title, lead, benefits = [], cta } = Astro.props;
   <div class="container-x grid gap-12 lg:grid-cols-2 items-center">
     <div class="relative">
       <div class="aspect-[4/3] rounded-2xl bg-soft border border-border overflow-hidden">
-        {image && <img src={image} alt={title} class="w-full h-full object-cover" />}
+        {image && <img src={image} alt={title} width="860" height="573" loading="lazy" decoding="async" class="w-full h-full object-cover" />}
       </div>
       {badge && <div class="btn-primary absolute -bottom-4 left-6 text-sm pointer-events-none">{badge}</div>}
     </div>

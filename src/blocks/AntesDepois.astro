@@ -14,11 +14,11 @@ const { eyebrow, title, items = [] } = Astro.props;
         <div class="card p-4">
           <div class="grid grid-cols-2 gap-3">
             <div class="aspect-square rounded-xl bg-soft overflow-hidden relative">
-              {it.before && <img src={it.before} alt={`Antes — ${it.label}`} class="w-full h-full object-cover" />}
+              {it.before && <img src={it.before} alt={`Antes — ${it.label}`} loading="lazy" decoding="async" class="w-full h-full object-cover" />}
               <span class="absolute top-2 left-2 text-xs bg-ink/70 text-white px-2 py-0.5 rounded">Antes</span>
             </div>
             <div class="aspect-square rounded-xl bg-soft overflow-hidden relative">
-              {it.after && <img src={it.after} alt={`Depois — ${it.label}`} class="w-full h-full object-cover" />}
+              {it.after && <img src={it.after} alt={`Depois — ${it.label}`} loading="lazy" decoding="async" class="w-full h-full object-cover" />}
               <span class="absolute top-2 left-2 text-xs bg-accent text-accent-ink px-2 py-0.5 rounded">Depois</span>
             </div>
           </div>

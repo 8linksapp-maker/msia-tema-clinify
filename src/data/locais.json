@@ -1,32 +1,77 @@
 [
   {
-    "slug": "pinheiros", "nome": "Pinheiros", "prep": "em",
+    "slug": "pinheiros",
+    "nome": "Pinheiros",
+    "prep": "em",
     "regiao": "Zona Oeste de São Paulo",
-    "bairrosVizinhos": ["Vila Madalena", "Jardim Paulista", "Itaim Bibi"],
+    "bairrosVizinhos": [
+      "Vila Madalena",
+      "Jardim Paulista",
+      "Itaim Bibi"
+    ],
     "referenciaLocal": "Atendemos pacientes de Pinheiros e região, perto da Faria Lima e da Rua dos Pinheiros.",
     "faq": [
-      { "q": "Vocês atendem urgência em Pinheiros?", "a": "Sim, temos horários reservados para urgências odontológicas no mesmo dia." },
-      { "q": "Tem estacionamento perto?", "a": "Há estacionamentos rotativos na região e fácil acesso por transporte público." }
+      {
+        "q": "Vocês atendem urgência em Pinheiros?",
+        "a": "Sim, temos horários reservados para urgências odontológicas no mesmo dia."
+      },
+      {
+        "q": "Tem estacionamento perto?",
+        "a": "Há estacionamentos rotativos na região e fácil acesso por transporte público."
+      }
     ]
   },
   {
-    "slug": "moema", "nome": "Moema", "prep": "em",
+    "slug": "moema",
+    "nome": "Moema",
+    "prep": "em",
     "regiao": "Zona Sul de São Paulo",
-    "bairrosVizinhos": ["Vila Nova Conceição", "Campo Belo", "Indianópolis"],
+    "bairrosVizinhos": [
+      "Vila Nova Conceição",
+      "Campo Belo",
+      "Indianópolis"
+    ],
     "referenciaLocal": "Próximo ao Parque Ibirapuera e à Av. Ibirapuera, atendemos toda a região de Moema.",
     "faq": [
-      { "q": "Quanto tempo dura uma avaliação?", "a": "A primeira avaliação leva cerca de 40 minutos, com diagnóstico e plano de tratamento." },
-      { "q": "Aceitam parcelamento?", "a": "Sim, oferecemos condições de pagamento facilitadas." }
+      {
+        "q": "Quanto tempo dura uma avaliação?",
+        "a": "A primeira avaliação leva cerca de 40 minutos, com diagnóstico e plano de tratamento."
+      },
+      {
+        "q": "Aceitam parcelamento?",
+        "a": "Sim, oferecemos condições de pagamento facilitadas."
+      }
     ]
   },
   {
-    "slug": "tatuape", "nome": "Tatuapé", "prep": "no",
+    "slug": "tatuape",
+    "nome": "Tatuapé",
+    "prep": "no",
     "regiao": "Zona Leste de São Paulo",
-    "bairrosVizinhos": ["Vila Formosa", "Anália Franco", "Carrão"],
+    "bairrosVizinhos": [
+      "Vila Formosa",
+      "Anália Franco",
+      "Carrão"
+    ],
     "referenciaLocal": "No coração da Zona Leste, atendemos pacientes do Tatuapé e bairros vizinhos.",
     "faq": [
-      { "q": "Fazem implante em quanto tempo?", "a": "Depende do caso; após a avaliação explicamos o cronograma completo." },
-      { "q": "Atendem crianças?", "a": "Sim, temos odontopediatria com atendimento gentil." }
+      {
+        "q": "Fazem implante em quanto tempo?",
+        "a": "Depende do caso; após a avaliação explicamos o cronograma completo."
+      },
+      {
+        "q": "Atendem crianças?",
+        "a": "Sim, temos odontopediatria com atendimento gentil."
+      }
     ]
+  },
+  {
+    "slug": "barra-funda",
+    "nome": "Barra funda",
+    "prep": "em",
+    "regiao": "Barra funda",
+    "bairrosVizinhos": [],
+    "referenciaLocal": "",
+    "faq": []
   }
 ]

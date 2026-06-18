@@ -22,7 +22,7 @@ const right = features.slice(3, 6);
         ))}
       </div>
       <div class="rounded-2xl bg-soft border border-border overflow-hidden min-h-[16rem]">
-        {image && <img src={image} alt={title} class="w-full h-full object-cover" />}
+        {image && <img src={image} alt={title} width="860" height="573" loading="lazy" decoding="async" class="w-full h-full object-cover" />}
       </div>
       <div class="grid gap-6 content-center">
         {right.map((f) => (

@@ -28,7 +28,7 @@ const { eyebrow, title, lead, cta, rating, doctor, contact } = Astro.props;
     </div>
     <div class="relative">
       <div class="aspect-[4/3] rounded-2xl bg-surface border border-border overflow-hidden">
-        {doctor?.photo && <img src={doctor.photo} alt={doctor.name} class="w-full h-full object-cover" />}
+        {doctor?.photo && <img src={doctor.photo} alt={doctor.name} width="800" height="1200" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover" />}
       </div>
       {doctor && (
         <div class="card absolute -bottom-5 left-5 px-5 py-3 shadow-sm">

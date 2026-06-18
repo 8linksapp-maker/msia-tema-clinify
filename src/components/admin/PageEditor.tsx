@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { triggerToast } from './CmsToaster';
 import { githubApi } from '../../lib/adminApi';
+import ImageField from './ImageField';
 
 // ─── Types (mirrors page.ts schemas) ────────────────────────────────────────
 
@@ -144,7 +145,7 @@ function HeroFields({ props, onChange }: { props: HeroProps; onChange: (p: HeroP
                 <div><label className={labelClass}>Nome</label><input type="text" value={p.doctor?.name || ''} onChange={e => up('doctor', { ...p.doctor, name: e.target.value })} className={inputClass} /></div>
                 <div><label className={labelClass}>Especialidade</label><input type="text" value={p.doctor?.role || ''} onChange={e => up('doctor', { ...p.doctor, role: e.target.value })} className={inputClass} /></div>
             </div>
-            <div><label className={labelClass}>Foto (path)</label><input type="text" value={p.doctor?.photo || ''} onChange={e => up('doctor', { ...p.doctor, photo: e.target.value })} className={inputClass} placeholder="/images/doctor.jpg" /></div>
+            <ImageField label="Foto" value={p.doctor?.photo || ''} onChange={v => up('doctor', { ...p.doctor, photo: v })} placeholder="/images/doctor.jpg" hint="Recomendado: 1200×900px · proporção 4:3 · JPG ou WebP" />
             <p className={subHeadClass}>Contato no hero</p>
             <div className="grid grid-cols-2 gap-3">
                 <div><label className={labelClass}>Telefone</label><input type="text" value={p.contact?.phone || ''} onChange={e => up('contact', { ...p.contact, phone: e.target.value })} className={inputClass} /></div>
@@ -165,7 +166,7 @@ function SobreFields({ props, onChange }: { props: SobreProps; onChange: (p: Sob
 
     return (
         <div className="space-y-3">
-            <div><label className={labelClass}>Imagem (path)</label><input type="text" value={p.image || ''} onChange={e => up('image', e.target.value)} className={inputClass} placeholder="/images/about.jpg" /></div>
+            <ImageField label="Imagem" value={p.image || ''} onChange={v => up('image', v)} placeholder="/images/about.jpg" hint="Recomendado: 1200×900px · proporção 4:3 · JPG ou WebP" />
             <div><label className={labelClass}>Badge</label><input type="text" value={p.badge || ''} onChange={e => up('badge', e.target.value)} className={inputClass} /></div>
             <div><label className={labelClass}>Eyebrow</label><input type="text" value={p.eyebrow || ''} onChange={e => up('eyebrow', e.target.value)} className={inputClass} /></div>
             <div><label className={labelClass}>Título *</label><input type="text" value={p.title} onChange={e => up('title', e.target.value)} className={inputClass} /></div>
@@ -261,7 +262,7 @@ function PorqueEscolherFields({ props, onChange }: { props: PorqueEscolherProps;
         <div className="space-y-3">
             <div><label className={labelClass}>Eyebrow</label><input type="text" value={p.eyebrow || ''} onChange={e => up('eyebrow', e.target.value)} className={inputClass} /></div>
             <div><label className={labelClass}>Título</label><input type="text" value={p.title || ''} onChange={e => up('title', e.target.value)} className={inputClass} /></div>
-            <div><label className={labelClass}>Imagem (path)</label><input type="text" value={p.image || ''} onChange={e => up('image', e.target.value)} className={inputClass} placeholder="/images/why.jpg" /></div>
+            <ImageField label="Imagem" value={p.image || ''} onChange={v => up('image', v)} placeholder="/images/why.jpg" hint="Recomendado: 1200×800px · proporção 3:2 · JPG ou WebP" />
             <p className={subHeadClass}>Diferenciais ({features.length})</p>
             <div className="space-y-3">
                 {features.map((f, i) => (
@@ -337,7 +338,7 @@ function EquipeFields({ props, onChange }: { props: EquipeProps; onChange: (p: E
                         </div>
                         <div><label className={labelClass}>Nome</label><input type="text" value={m.name} onChange={e => updateMember(i, 'name', e.target.value)} className={inputClass} /></div>
                         <div><label className={labelClass}>Especialidade</label><input type="text" value={m.role} onChange={e => updateMember(i, 'role', e.target.value)} className={inputClass} /></div>
-                        <div><label className={labelClass}>Foto (path)</label><input type="text" value={m.photo} onChange={e => updateMember(i, 'photo', e.target.value)} className={inputClass} placeholder="/images/team-1.jpg" /></div>
+                        <ImageField label="Foto" value={m.photo} onChange={v => updateMember(i, 'photo', v)} placeholder="/images/team-1.jpg" hint="Recomendado: 800×1066px · retrato 3:4 · JPG ou WebP" />
                     </div>
                 ))}
             </div>
@@ -407,8 +408,8 @@ function AntesDepoisFields({ props, onChange }: { props: AntesDepoisProps; onCha
                         </div>
                         <div><label className={labelClass}>Rótulo</label><input type="text" value={it.label} onChange={e => updateItem(i, 'label', e.target.value)} className={inputClass} /></div>
                         <div className="grid grid-cols-2 gap-3">
-                            <div><label className={labelClass}>Antes (path)</label><input type="text" value={it.before} onChange={e => updateItem(i, 'before', e.target.value)} className={inputClass} placeholder="/images/before-1.jpg" /></div>
-                            <div><label className={labelClass}>Depois (path)</label><input type="text" value={it.after} onChange={e => updateItem(i, 'after', e.target.value)} className={inputClass} placeholder="/images/after-1.jpg" /></div>
+                            <ImageField label="Antes" value={it.before} onChange={v => updateItem(i, 'before', v)} placeholder="/images/before-1.jpg" hint="Recomendado: 800×800px · quadrada 1:1" />
+                            <ImageField label="Depois" value={it.after} onChange={v => updateItem(i, 'after', v)} placeholder="/images/after-1.jpg" hint="Recomendado: 800×800px · quadrada 1:1" />
                         </div>
                     </div>
                 ))}
@@ -442,7 +443,7 @@ function NovidadesFields({ props, onChange }: { props: NovidadesProps; onChange:
                         </div>
                         <div><label className={labelClass}>Título</label><input type="text" value={it.title} onChange={e => updateItem(i, 'title', e.target.value)} className={inputClass} /></div>
                         <div><label className={labelClass}>Resumo</label><input type="text" value={it.excerpt} onChange={e => updateItem(i, 'excerpt', e.target.value)} className={inputClass} /></div>
-                        <div><label className={labelClass}>Imagem (path)</label><input type="text" value={it.image} onChange={e => updateItem(i, 'image', e.target.value)} className={inputClass} placeholder="/images/post-1.jpg" /></div>
+                        <ImageField label="Imagem" value={it.image} onChange={v => updateItem(i, 'image', v)} placeholder="/images/post-1.jpg" hint="Recomendado: 1200×750px · proporção 16:10 · JPG ou WebP" />
                         <div><label className={labelClass}>Link</label><input type="text" value={it.href} onChange={e => updateItem(i, 'href', e.target.value)} className={inputClass} placeholder="/blog/meu-artigo" /></div>
                     </div>
                 ))}

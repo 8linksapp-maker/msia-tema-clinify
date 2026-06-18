@@ -13,7 +13,7 @@ const { eyebrow, title, members = [] } = Astro.props;
       {members.map((m) => (
         <article class="card overflow-hidden">
           <div class="aspect-[3/4] bg-soft">
-            {m.photo && <img src={m.photo} alt={m.name} class="w-full h-full object-cover" />}
+            {m.photo && <img src={m.photo} alt={m.name} width="720" height="1080" loading="lazy" decoding="async" class="w-full h-full object-cover" />}
           </div>
           <div class="p-5">
             <h3 class="text-base">{m.name}</h3>
